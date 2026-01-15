@@ -1,3 +1,29 @@
+# Information
+
+Detta är första uppgiften med Javascript på medieinstitutet, där uppgiften är att skapa en liten online shop med 10 produkter, sortera efter tre kategoriser (sura, söta och pris), ha en interaktiv kundvagn som uppdaterar beroende på vad du lägger i. Kundvagnen ska dyka upp när man trycker på iconen och ta en till ett sammanfattning och ett beställningsformulär.
+
+## Använda tekniker
+
+![HTML badge](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS badge](https://img.shields.io/badge/CSS-563d7c?&style=flat&logo=css3&logoColor=white)
+![Sass](https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white)
+![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![macOS](https://img.shields.io/badge/macOS-000000?style=flat&logo=apple&logoColor=white)
+
+![Mockup på papper](mockup.png)
+
+![Mockup på flödet med miro](miro.png)
+
+![Lighthouse](lighthouse.png)
+
+![Firefox](firefox.png)
+
+![w3c](w3c.png)
+
+
+
+
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/FFO6Kf7w)
 # Inlämningsuppgift 1 i JavaScript intro
 
