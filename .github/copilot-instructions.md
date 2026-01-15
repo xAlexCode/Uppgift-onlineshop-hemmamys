@@ -1,6 +1,6 @@
 ---
 description: 'Specific rules for the code review agent on Pull Requests.'
-excludeAgent: "coding" 
+excludeAgent: ["coding"] 
 ---
 
 # Code Review Agent Instructions

@@ -1,4 +1,4 @@
-import './style.css';
+import './style.scss';
 
 const clickMeBtn = document.querySelector('#clickMe');
 clickMeBtn.addEventListener('click', helloWorld);
