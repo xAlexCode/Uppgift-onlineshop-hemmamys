@@ -78,13 +78,84 @@ const products = [ //Array med produkter till sidan
   }
 ];
 
+let filteredProducts = Array.from(products); //Skapar en kopia av products arrayen som vi kan filtrera och sortera utan att ändra originalet
 const productsListing = document.querySelector('#products'); //Hämtar section elementet med id "products"
+
+// -----------------------------------------------------------------
+// ------------------------ Filter knappar -------------------------
+// -----------------------------------------------------------------
+const filterSweetBtn = document.querySelector('#filterSweetBtn'); //Hämtar knappar för att filtrera produkter
+const filterSourBtn = document.querySelector('#filterSourBtn');
+const filterChocolateBtn = document.querySelector('#filterChocolateBtn');
+
+filterSweetBtn.addEventListener('click', filterProductListSweetCategory); //Lägger till event listeners på knapparna
+filterSourBtn.addEventListener('click', filterProductListSourCategory);
+filterChocolateBtn.addEventListener('click', filterProductListChocolateCategory);
+// ------------------------------------------------------------------
+// ------------------------ Sortera knappar -------------------------
+// ------------------------------------------------------------------
+
+// Funktion för att sortera produkter efter pris (billigast först)
+const sortByPriceBtn = document.querySelector('#sortPriceBtn');
+sortByPriceBtn.addEventListener('click', sortByPrice);
+
+function sortByPrice() {
+  filteredProducts.sort((product1, product2) => product1.price - product2.price); //Sorterar filteredProducts arrayen efter billigast pris till dyrast
+  printProducts(); //Skriver ut produkterna igen efter sortering
+}
+
+// Funktion för att sortera produkter efter namn
+const sortByNameBtn = document.querySelector('#sortNameBtn');
+sortByNameBtn.addEventListener('click', sortByName);
+
+function sortByName() {
+  filteredProducts.sort((product1, product2) => { //Sorterar filteredProducts arrayen efter namn i alfabetisk ordning
+    const product1Name = product1.name.toUpperCase(); // Gör namnen till versaler för att undvika problem med små och stora bokstäver
+    const product2Name = product2.name.toUpperCase();
+
+    if (product1.name < product2.name) {
+      return -1;
+    }
+    if (product1.name > product2.name) {
+      return 1;
+    }
+    return 0; // Om namnen är lika
+  });
+  printProducts(); //Skriver ut produkterna igen efter sortering
+}
+
+// -----------------------------------------------------------------
+// ------------------------ Filter funktion ------------------------
+// -----------------------------------------------------------------
+function showAllProducts() {
+  filteredProducts = Array.from(products);
+  printProducts();
+}
+
+function filterProductListSweetCategory() {
+  filteredProducts = products.filter((product) => product.category === 'sweet');
+  printProducts();
+}
+
+function filterProductListSourCategory() {
+  filteredProducts = products.filter((product) => product.category === 'sour');
+  printProducts();
+}
+
+function filterProductListChocolateCategory() {
+  filteredProducts = products.filter((product) => product.category === 'chocolate');
+  printProducts();
+}
+
+// -----------------------------------------------------------------
+// ------------------------ Skapa produktlista ---------------------
+// -----------------------------------------------------------------
 
 function printProducts() { //Funktion som skriver ut alla produkter på sidan
   productsListing.innerHTML = ''; // Tömmer productListing innan vi lägger till nya produkter
 
-  for (let i = 0; i < products.length; i++) { // en loop som går igenom alla produkter
-    const product = products[i];  //Detta är den aktuella produkten
+  for (let i = 0; i < filteredProducts.length; i++) { // en loop som går igenom alla produkter
+    const product = filteredProducts[i];  //Detta är den aktuella produkten
 
   //Skapar en HTML-struktur för produkten
   const html = ` 
