@@ -1,0 +1,35 @@
+//Background color for navbar
+$nav-background: #93719d;
+
+//Background color for body
+$body-background: #eaddf5;
+
+//Background color for productcards
+$card-background: #b584cf;
+
+//Text color
+
+body {
+    background-color: $body-background;
+    color: white;
+}
+
+nav {
+    background-color: $nav-background;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.products-list {
+    padding-top: 1rem;
+  
+    article {
+        border: #836969 2px solid;
+        background-color: $card-background;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+
+
