@@ -108,25 +108,50 @@ function sortByPrice() {
   printProducts(); //Skriver ut produkterna igen efter sortering
 }
 
-// Funktion för att sortera produkter efter namn
+// Funktion för att sortera produkter efter namn (alfabetisk ordning) kort version
 const sortByNameBtn = document.querySelector('#sortNameBtn');
 sortByNameBtn.addEventListener('click', sortByName);
 
 function sortByName() {
-  filteredProducts.sort((product1, product2) => { //Sorterar filteredProducts arrayen efter namn i alfabetisk ordning
-    const product1Name = product1.name.toUpperCase(); // Gör namnen till versaler för att undvika problem med små och stora bokstäver
-    const product2Name = product2.name.toUpperCase();
-
-    if (product1.name < product2.name) {
-      return -1;
-    }
-    if (product1.name > product2.name) {
-      return 1;
-    }
-    return 0; // Om namnen är lika
-  });
+  filteredProducts.sort((product1, product2) => 
+  product1.name.localeCompare(product2.name));
   printProducts(); //Skriver ut produkterna igen efter sortering
 }
+
+//funktin för att sortera produkter efter betyg (högst först)
+const sortRatingBtn = document.querySelector('#sortRatingBtn');
+sortRatingBtn.addEventListener('click', sortByRating);
+
+function sortByRating() {
+  filteredProducts.sort((product1, product2) => product2.rating - product1.rating); //Sorterar filteredProducts arrayen efter högst betyg till lägst
+  printProducts(); //Skriver ut produkterna igen efter sortering
+}
+
+// Funktion för att sortera produkter efter kategori
+const sortCategoryBtn = document.querySelector('#sortCategoryBtn');
+sortCategoryBtn.addEventListener('click', sortByCategory);
+
+function sortByCategory() {
+  filteredProducts.sort((product1, product2) => 
+  product1.category.localeCompare(product2.category));
+  printProducts(); //Skriver ut produkterna igen efter sortering
+}
+/** Längare version av sortByCategory funktionen utbytt till kortare
+ * function sortByCategory() {
+  filteredProducts.sort((product1, product2) => { //Sorterar filteredProducts arrayen efter kategori i alfabetisk ordning
+    const product1Category = product1.category.toUpperCase(); // Gör kategorierna till versaler för att undvika problem med små och stora bokstäver
+    const product2Category = product2.category.toUpperCase();
+
+    if (product1.category < product2.category) {
+      return -1;
+    }
+    if (product1.category > product2.category) {
+      return 1;
+    }
+    return 0; // Om kategorierna är lika
+  });
+  printProducts(); //Skriver ut produkterna igen efter sortering
+}*/
 
 // -----------------------------------------------------------------
 // ------------------------ Filter funktion ------------------------
