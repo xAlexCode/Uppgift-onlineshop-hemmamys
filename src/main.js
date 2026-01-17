@@ -114,7 +114,7 @@ sortByNameBtn.addEventListener('click', sortByName);
 
 function sortByName() {
   filteredProducts.sort((product1, product2) => 
-  product1.name.localeCompare(product2.name));
+  product1.name > product2.name);
   printProducts(); //Skriver ut produkterna igen efter sortering
 }
 
@@ -133,7 +133,7 @@ sortCategoryBtn.addEventListener('click', sortByCategory);
 
 function sortByCategory() {
   filteredProducts.sort((product1, product2) => 
-  product1.category.localeCompare(product2.category));
+  product1.category > product2.category);
   printProducts(); //Skriver ut produkterna igen efter sortering
 }
 /** Längare version av sortByCategory funktionen utbytt till kortare
