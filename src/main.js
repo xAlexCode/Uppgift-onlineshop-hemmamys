@@ -87,10 +87,13 @@ const productsListing = document.querySelector('#products'); //Hämtar section e
 const filterSweetBtn = document.querySelector('#filterSweetBtn'); //Hämtar knappar för att filtrera produkter
 const filterSourBtn = document.querySelector('#filterSourBtn');
 const filterChocolateBtn = document.querySelector('#filterChocolateBtn');
+const filterShowAllBtn = document.querySelector('#filterShowAllBtn');
 
 filterSweetBtn.addEventListener('click', filterProductListSweetCategory); //Lägger till event listeners på knapparna
 filterSourBtn.addEventListener('click', filterProductListSourCategory);
 filterChocolateBtn.addEventListener('click', filterProductListChocolateCategory);
+filterShowAllBtn.addEventListener('click', filterProductsListShowAll);
+
 // ------------------------------------------------------------------
 // ------------------------ Sortera knappar -------------------------
 // ------------------------------------------------------------------
@@ -100,6 +103,7 @@ const sortByPriceBtn = document.querySelector('#sortPriceBtn');
 sortByPriceBtn.addEventListener('click', sortByPrice);
 
 function sortByPrice() {
+  console.log("sortByPrice funktionen körs");
   filteredProducts.sort((product1, product2) => product1.price - product2.price); //Sorterar filteredProducts arrayen efter billigast pris till dyrast
   printProducts(); //Skriver ut produkterna igen efter sortering
 }
@@ -127,7 +131,7 @@ function sortByName() {
 // -----------------------------------------------------------------
 // ------------------------ Filter funktion ------------------------
 // -----------------------------------------------------------------
-function showAllProducts() {
+function filterProductsListShowAll() {
   filteredProducts = Array.from(products);
   printProducts();
 }
@@ -169,7 +173,7 @@ function printProducts() { //Funktion som skriver ut alla produkter på sidan
     <p>Kategori: ${product.category}</p>
   </article>
   `;
-  console.log(html); //Loggar html-strukturen i konsolen för att se att det fungerar
+  
     productsListing.innerHTML += html; //Lägger tiill html i DOM:en
 
   }
