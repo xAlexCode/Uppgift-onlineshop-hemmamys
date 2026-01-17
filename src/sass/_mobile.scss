@@ -12,16 +12,28 @@ $card-background: #b584cf;
 body {
     background-color: $body-background;
     color: white;
+    margin: 0;
 }
 
-nav {
+header {
     background-color: $nav-background;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 1rem;
+   
+    nav {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        margin: 0;
+        
+        h1 {
+        margin: 0;
+       }
+    }
 }
+
 .products-list {
     padding-top: 1rem;
+    margin: 1rem;
   
     article {
         border: #836969 2px solid;

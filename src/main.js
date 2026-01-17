@@ -2,7 +2,7 @@ import './style.scss';
 
 /**
  * Skapa en lista med 10 produkter (name, price, rating, category, img) och lägg till dem i DOM:en. Alltså section elementet med id "products" kommer att fyllas med tio divs som representerar produkter. 
- * Varje produkt div ska innehålla ett h2 element för produktens namn och ett p element för produktens pris.
+ * Varje produkt-div ska innehålla ett h2 element för produktens namn och ett p element för produktens pris.
  */
 
 const products = [ //Array med produkter till sidan

@@ -8,7 +8,7 @@ Började rita wireframe på papper
 Började rita flöde i miro
 
 Psuedokod för javascript dokumentet:
--Skapa en lista med 10 produkter till online shopen. Listan ska innehålla namn, pris, betyg,en toggle knapp för antal produkter och en knapp för lägg till i kundvagn.
+-Skapa en lista med 10 produkter till online shopen. Listan ska innehålla namn, pris, betyg, kategori, en toggle knapp för antal produkter och en knapp för lägg till i kundvagn.
 
 -Kundvagnen ska uppdateras i hörnet? Du ska kunna klicka på kundvagnen och se en sammanställning av artiklar och kunna klicka sig vidare till beställningsformuläret. 
 
