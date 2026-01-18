@@ -71,8 +71,22 @@ header {
             flex-direction: row;
             justify-content: space-around;
         }
-    }
 
+        .button button {
+            background-color: $nav-background;
+            color: $heading-color;
+            padding: 0.8rem 1rem; //padding funkar inte bra precis mellan mobil och tablet åtgärda!
+            border-radius: 6px;
+            border: none;
+            cursor: pointer; 
+            transition: background-color 0.2s ease, transform 0.2s ease;
+
+            &:hover {
+                background-color: #71b9c8;
+                color: #2C2C2C;  //Kolla hur man kan få den att vara annan färg när den är klickad på 
+            }
+        }
+    }
 }
 
 .products-list {
