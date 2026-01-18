@@ -16,24 +16,33 @@
     </header>
 
     <main>
-      <img src="img/Banner.jpeg" alt="Ett hav av godis i olika sorter" loading="lazy" width="2000" height="200" /> <!-- Bannerbild kommer senare detta är exempel -->
+      <figure class="banner">
+        <img src="img/Banner.jpg" alt="Ett hav av godis i olika sorter" loading="lazy" width="2000" height="200" />
+      </figure>
+      
+      <section class="sort">
+        <div class="left">
+          <h2>Sortera:</h2>
+          <div class="button">          
+            <button id="sortNameBtn">A-Z</button>
+            <button id="sortPriceBtn">Pris</button>
+            <button id="sortRatingBtn">Betyg</button>
+            <button id="sortCategoryBtn">Kategori</button>
+          </div>
+        </div>
 
-      <div>
-        <h2>Sortera</h2>
-        <button id="sortNameBtn">A-Z</button>
-        <button id="sortPriceBtn">Pris</button>
-        <button id="sortRatingBtn">Betyg</button>
-        <button id="sortCategoryBtn">Kategori</button>
-      </div>
+        <div class="right">
+          <h2>Filtrera:</h2>
+          <div class="button"> 
+            <button id="filterShowAllBtn">Visa alla</button> 
+            <button id="filterSweetBtn">Sött</button>
+            <button id="filterSourBtn">Surt</button>
+            <button id="filterChocolateBtn">Choklad</button>
+          </div>
+        </div>  
+      </section>
 
-      <div>
-        <h2>Filtrera</h2>
-        <button id="filterSweetBtn">Söt</button>
-        <button id="filterSourBtn">Sur</button>
-        <button id="filterChocolateBtn">Choklad</button>
-        <button id="filterShowAllBtn">Visa alla</button>
-      </div>
-
+      
       <section class="products-list" id="products"></section><!-- Add products with JS -->
       <section>
        <!--- Kunduppgifter kommer senare -->

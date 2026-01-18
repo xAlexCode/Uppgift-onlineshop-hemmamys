@@ -7,74 +7,74 @@ import './style.scss';
 
 const products = [ //Array med produkter till sidan
   {
-    name: 'Nappar', 
+    name: 'Sura nappar', 
     price: 19, 
     rating: 4, 
-    category: 'sweet', 
-    img: 'img/Surapersikor.jpeg'
+    category: 'sour', 
+    img: 'img/Napp.jpg'
   },
   {
-    name: 'Chokladbit', 
+    name: 'Ferrero Rocher', 
     price: 12, 
-    rating: 4, 
-    category: 'chocolate', 
-    img: 'placeholder'
+    rating: 3, 
+    category: 'choklad', 
+    img: 'img/Ferrerorocher.jpg'
   }, 
   {
-    name: 'Bubbles Fizz', 
-    price: 8, 
-    rating: 4, 
-    category: 'sweet', 
-    img: 'placeholder'
+    name: 'Bubble Fizz', 
+    price: 9, 
+    rating: 5, 
+    category: 'sött', 
+    img: 'img/Bubblefizz.jpg'
   },
   {
-    name: 'Sura remmar', 
+    name: 'Sura persikor', 
     price: 25, 
-    rating: 5, 
-    category: 'sour', 
-    img: 'placeholder'
+    rating: 4, 
+    category: 'surt', 
+    img: 'img/Surapersikor.jpg'
   },
   {
     name: 'Chokladkaka', 
-    price: 15, 
+    price: 30, 
     rating: 3, 
-    category: 'chocolate', 
-    img: 'placeholder'
+    category: 'choklad', 
+    img: 'img/Chokladkaka.jpg'
   },
   {
     name: 'Gummibjörnar', 
     price: 10, 
-    rating: 4, 
-    category: 'sweet', 
-    img: 'placeholder'
+    rating: 1, 
+    category: 'sött', 
+    img: 'img/Gummibjornar.jpg'
+  },
+  { 
+    name: 'M&Ms', 
+    price: 2, 
+    rating: 5, 
+    category: 'choklad', 
+    img: 'img/Mms.jpg'
   },
   {
     name: 'Klubba', 
-    price: 5, 
+    price: 15, 
     rating: 2, 
-    category: 'sweet', 
-    img: 'placeholder'
-  },
-  { 
-    name: 'Mörk choklad', 
-    price: 20, 
-    rating: 5, 
-    category: 'chocolate', 
-    img: 'placeholder'
+    category: 'sött', 
+    img: 'img/Klubba.jpg'
   },
   {
     name: 'Sura ormar', 
     price: 18, 
     rating: 4, 
-    category: 'sour', 
-    img: 'placeholder'
+    category: 'surt', 
+    img: 'img/Ormar.jpg'
   },
   {
-    name: 'Sura persikor', 
+    name: 'Sura vingum', 
     price: 14, 
     rating: 3, 
-    category: 'sour', 
-    img: 'placeholder'
+    category: 'surt', 
+    img: 'img/Suravingum.jpg'
   }
 ];
 
@@ -156,23 +156,24 @@ function sortByCategory() {
 // -----------------------------------------------------------------
 // ------------------------ Filter funktion ------------------------
 // -----------------------------------------------------------------
+
 function filterProductsListShowAll() {
   filteredProducts = Array.from(products);
   printProducts();
 }
 
 function filterProductListSweetCategory() {
-  filteredProducts = products.filter((product) => product.category === 'sweet');
+  filteredProducts = products.filter((product) => product.category === 'sött');
   printProducts();
 }
 
 function filterProductListSourCategory() {
-  filteredProducts = products.filter((product) => product.category === 'sour');
+  filteredProducts = products.filter((product) => product.category === 'surt');
   printProducts();
 }
 
 function filterProductListChocolateCategory() {
-  filteredProducts = products.filter((product) => product.category === 'chocolate');
+  filteredProducts = products.filter((product) => product.category === 'choklad');
   printProducts();
 }
 
@@ -189,7 +190,7 @@ function printProducts() { //Funktion som skriver ut alla produkter på sidan
   //Skapar en HTML-struktur för produkten
   const html = ` 
   <article>
-    <img src="${product.img}" alt="${product.name}" loading="lazy" width="300" height="200">
+    <img src="${product.img}" alt="${product.name}" loading="lazy" width="200" height="200">
     <h2>${product.name}</h2>
     <div class="metadata">
       <p>Pris: ${product.price} kr</p>

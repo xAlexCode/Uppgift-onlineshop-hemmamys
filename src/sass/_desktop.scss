@@ -1,0 +1,27 @@
+@media screen and (min-width: 1024px) {
+    
+    .banner {
+        height: 25rem;
+    }
+
+    .sort {
+        max-width: 800px;
+        margin-left: auto;
+
+        .left, .right {
+            width: 100%;
+        }
+    }
+
+    .products-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width:1400px){
+
+    .products-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+}
