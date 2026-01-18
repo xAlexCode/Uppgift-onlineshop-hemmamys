@@ -191,7 +191,7 @@ function printProducts() { //Funktion som skriver ut alla produkter på sidan
   const html = ` 
   <article>
     <img src="${product.img}" alt="${product.name}" loading="lazy" width="200" height="200">
-    <h2>${product.name}</h2>
+    <h3>${product.name}</h3>
     <div class="metadata">
       <p>Pris: ${product.price} kr</p>
       <p>Betyg: ${product.rating} / 5</p>
