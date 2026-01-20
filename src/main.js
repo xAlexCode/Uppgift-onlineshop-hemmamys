@@ -10,7 +10,7 @@ const products = [ //Array med produkter till sidan
     name: 'Sura nappar', 
     price: 19, 
     rating: 4, 
-    category: 'sour', 
+    category: 'surt', 
     img: 'img/Napp.jpg'
   },
   {
@@ -48,12 +48,12 @@ const products = [ //Array med produkter till sidan
     category: 'sött', 
     img: 'img/Gummibjornar.jpg'
   },
-  { 
-    name: 'M&Ms', 
-    price: 2, 
-    rating: 5, 
+  {
+    name: 'Kit kat', 
+    price: 39, 
+    rating: 4, 
     category: 'choklad', 
-    img: 'img/Mms.jpg'
+    img: 'img/Kitkat.jpg'
   },
   {
     name: 'Klubba', 
@@ -69,13 +69,27 @@ const products = [ //Array med produkter till sidan
     category: 'surt', 
     img: 'img/Ormar.jpg'
   },
+  { 
+    name: 'M&Ms', 
+    price: 2, 
+    rating: 5, 
+    category: 'choklad', 
+    img: 'img/Mms.jpg'
+  },
   {
-    name: 'Sura vingum', 
+    name: 'Sura vingummin', 
     price: 14, 
     rating: 3, 
     category: 'surt', 
     img: 'img/Suravingum.jpg'
-  }
+  },
+  { 
+    name: 'Fruktkaramell', 
+    price: 5, 
+    rating: 1, 
+    category: 'sött', 
+    img: 'img/Karameller.jpg'
+  },
 ];
 
 let filteredProducts = Array.from(products); //Skapar en kopia av products arrayen som vi kan filtrera och sortera utan att ändra originalet
@@ -118,7 +132,7 @@ function sortByName() {
   printProducts(); //Skriver ut produkterna igen efter sortering
 }
 
-//funktin för att sortera produkter efter betyg (högst först)
+//funktion för att sortera produkter efter betyg (högst först)
 const sortRatingBtn = document.querySelector('#sortRatingBtn');
 sortRatingBtn.addEventListener('click', sortByRating);
 
@@ -190,19 +204,18 @@ function printProducts() { //Funktion som skriver ut alla produkter på sidan
   //Skapar en HTML-struktur för produkten
   const html = ` 
   <article>
-    <img src="${product.img}" alt="${product.name}" loading="lazy" width="200" height="200">
+    <img src="${product.img}" alt="${product.name}" loading="lazy" width="640" height="426">
     <h3>${product.name}</h3>
     <div class="metadata">
       <p>Pris: ${product.price} kr</p>
       <p>Betyg: ${product.rating} / 5</p>
+      <p>Kategori: ${product.category}</p>
       </div>
-    <p>Kategori: ${product.category}</p>
   </article>
   `;
-  
     productsListing.innerHTML += html; //Lägger tiill html i DOM:en
-
   }
+  
 }
 printProducts(); //kör funktionen
 
