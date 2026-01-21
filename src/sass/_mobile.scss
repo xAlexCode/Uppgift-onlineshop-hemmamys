@@ -48,6 +48,14 @@ header {
     }
 }
 
+#cart {
+    display: none;
+}
+
+#cart.visible {
+    display: block;
+}
+
 .sort {
     display: grid;
     grid-template-columns: 1fr;

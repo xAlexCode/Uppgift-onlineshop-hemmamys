@@ -196,4 +196,3 @@ function decreaseProductCount(e) {
 
 
 printProducts(); //kör funktionen
-
