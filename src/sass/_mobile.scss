@@ -32,6 +32,8 @@ body {
 }
 
 header {
+    position: fixed;
+    width: 100%;
     background-color: $nav-background;
     padding: 1rem;
    
@@ -48,12 +50,21 @@ header {
     }
 }
 
-#cart {
-    display: none;
+#cartsection {
+    position: fixed;
+    top: 67px;
+    right: 0;
+    width: 100%;
+    background-color: #71b9c8;
+    color: rgb(50, 49, 51);
+    padding: 1rem;
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid white;
 }
 
-#cart.visible {
-    display: block;
+#cartsection.hidden {
+    display: none;
 }
 
 .sort {
