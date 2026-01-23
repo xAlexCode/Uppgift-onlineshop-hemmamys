@@ -134,5 +134,13 @@ header {
     }
 }
 
+ .cart-total {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .highlight-price {
+        color: green;
+    }
+
 
 

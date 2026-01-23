@@ -118,23 +118,23 @@ function printProducts() { //Funktion som skriver ut alla produkter på sidan
 
   //Skapar en HTML-struktur för produkten
   const html = ` 
-  <article>
-    <img src="${product.img}" alt="${product.alt}" loading="lazy" width="640" height="426">
-    <div class="productheader">
-      <h3>${product.name}</h3>
-    </div>
-    <div class="metadata">
-      <p>Pris: ${product.price} kr</p>
-      <p>Betyg: ${product.rating} / 5</p>
-      <p>Kategori: ${product.category}</p>
-    </div>
-    <div class="controls">
-      <button class="decrease" aria-label="Minska antal" data-id="${product.id}">-</button>
-      <input type="number" aria-label="Välj antal" id="amount-${product.id}" disabled>
-      <button class="increase" aria-label="Öka antal" data-id="${product.id}">+</button>
-    </div>
-    <button class="buy" data-id="${product.id}">Lägg till</button>
-  </article>
+    <article>
+      <img src="${product.img}" alt="${product.alt}" loading="lazy" width="640" height="426">
+      <div class="productheader">
+        <h3>${product.name}</h3>
+      </div>
+      <div class="metadata">
+        <p>Pris: ${product.price} kr</p>
+        <p>Betyg: ${product.rating} / 5</p>
+        <p>Kategori: ${product.category}</p>
+      </div>
+      <div class="controls">
+        <button class="decrease" aria-label="Minska antal" data-id="${product.id}">-</button>
+        <input type="number"  value="0" aria-label="Välj antal" id="amount-${product.id}" disabled>
+        <button class="increase" aria-label="Öka antal" data-id="${product.id}">+</button>
+      </div>
+      <button class="buy" data-id="${product.id}">Lägg till</button>
+    </article>
   `;
     productsListing.innerHTML += html; //Lägger tiill html i DOM:en
   }
@@ -188,30 +188,33 @@ function increaseProductCount(e) {
 function decreaseProductCount(e) {
   const clickedBtnId = e.target.dataset.id;  // Hämtar ID:t från knappen som klickades ex 3
   const input = document.querySelector(`#amount-${clickedBtnId}`); // Hittar rätt input‑fält baserat på ID:t ex #amount-3
-
-  if (Number(input.value) <= 1) { // Om värdet redan är 1 eller mindre ska vi inte minska mer och return stoppar funktionen direkt
-    return;
+  
+  let amount = Number(input.value) -1;// Om värdet redan är 1 eller mindre ska vi inte minska mer och return stoppar funktionen direkt
+    if (amount < 0) {
+      amount = 0;
+    }
+    input.value = amount;
   }
 
-  input.value = Number(input.value) - 1; // Säger att inputvärdet ska minska med -1 om inte det redan är mindre än 1
-}
-
 // ----------------------------------------------------------------------------------------------------------------------------------
-// ------------------------------------------------------ Funktion köp knapp --------------------------------------------------------
+// --------------------------------------------- Funktion lägg till produkt i kundvagn ----------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------------------
 //Skapa funktion som gör att artikeln läggs in i kundvagnen vid klick och senare antalet.
 /**
- * Hur jag behöver tänka. 
- * Skapa ett event vid klick och kalla funktionen addProductToCart. Logga att knappen faktiskt skriver ut vid knappttryck. 
+ * Skapa ett event vid klick och kalla funktionen addProductToCart. 
+ * Logga att köp knappen faktiskt skriver ut vid knappttryck. 
  * Vid knapptryck måste vi hitta vilken produkt det gäller och dess id.
- *  
- * 
+ * Leta upp produkten i listan med id, om ingen produkt hittas return/avbryt
+ * Hämta input-fältet med antal, läs av hur många produkter det är, är det mindre än 1 avbryt
+ * Kontrollera om produkten finns i kundvagnen
+ * Uppdatera totalsumman i kundvagnen och skriv ut på nytt
  */
 
+// Funktion som lägger till en produkt i kundvagnen när användaren klickar på "köp"
 function addProductToCart (e) {
   console.log("köp knapp klickad");
 
-  const clickedBtnId = Number(e.target.dataset.id); // Hämta id från knappen
+  const clickedBtnId = Number(e.target.dataset.id); // Hämta id från knappen som klickades
   console.log("Id från knappen", clickedBtnId); //Loggar vilket Id som hämtats från knapptrycket ex 3
   const product = products.find(product => product.id === clickedBtnId); //Söker upp rätt produkt från arrayen baserat på ID
   console.log("hittad produkten i products", product); //Loggar när den hittat hela objektet med namn, pris osv
@@ -220,32 +223,160 @@ function addProductToCart (e) {
     return;
   }
 
+  //Kolla hur många produkter kunden vill beställa från input-fältet och hämta listan
+  const inputField = document.querySelector(`#amount-${clickedBtnId}`);
+  let amount = Number(inputField.value);
+  if (amount < 1) { //Om antalet är mindre än 1 avbryt
+    return;
+  }
+
+  inputField.value = 0; // återställ input-fältet till 0 efter tryck på köp
+
   const index = cart.findIndex(product => product.id === clickedBtnId); // kolla om produkten redan finns i cart -1 finns det inte i varukorgen och är det 0,1,2.. finns det
-  if (index === -1) {
-    product.amount = 1;  //om produkten inte finns i cart, sätt första produkten till 1
+  if (index === -1) {  //om produkten inte finns i cart, sätt första produkten till 1
+    product.amount = amount; 
     cart.push(product); // Lägg till produkten i kundvagnen
   } 
   else {
-    cart[index].amount += 1;
+    product.amount += amount; //Produkten finns redan, öka antalet
   }
+
+  updateCartTotals(); // Uppdatera totalsumman och skriv ut i kundvagnen igen
   printCart();
 }
 
+// ----------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------- Funktion uppdatera pris i kundvagnen ------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Uppdaterar totalsumman i kundvagnen genom att summera pris gånger antal och skriver ut resultatet i DOM-trädet
+ */
 
+const cartTotalElement = document.querySelector ('#cartTotal');
+function updateCartTotals() {
+
+  let cartTotal = 0; //Start värde för totalsumman
+
+  for (let i = 0; i < cart.length;i++) { //Loopa igenom alla produkter i kundvagnen
+    const productSum = cart[i].price * cart[i].amount; // Räkna ut delsumman för varje produkt (pris * antal)
+    cartTotal += productSum; //Lägg till delsumman till den totala summan
+  }
+
+  cartTotalElement.innerHTML = `${cartTotal} kr`; // SKriver ut totalsumman i DOM-trädet
+
+  highlightCartTotal(); // ändrar färg på totalsumman vid tillläggning eller borttagning av varor i kundvagnen
+}
+// ----------------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------- Funktion highlight köpsumma --------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Lägga till highlights på totalsumman i kundvagnen
+ * Lägg till en CSS-klass (highlight-price) på elementet som visar totalsumman i kundvagnen
+ * Sätt en timer på 1 sek
+ * När timern går ut kör funktionen removeCartTotalHighlight som tar bort css-klassen
+ */
+
+//Lägger till highlight på totalsumman
+function highlightCartTotal() {
+  cartTotalElement.classList.add('highlight-price'); //Detta lägger till CSS-klassen som ändrar färg på texten 
+
+  const SECONDS_IN_MS = 1000; //Tidsberäkning 1 sekund i milisekunder
+  const SECONDS = 1; //Tidsberäkning 1 sekund
+  setTimeout(removeCartTotalHighlight, SECONDS_IN_MS * SECONDS); //Tar bort highlight efter 1 sekund
+}
+
+// Tar bort highlight från totalsumman
+function removeCartTotalHighlight() {
+  cartTotalEl.classList.remove('highlight-price'); // tar bort CSS-klassen så highlight effekten försvinner
+}
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------ Kundvagnen ----------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+/**
+ * Skapa en html struktur med kundvagnens innehåll som hamnar i DOM-trädet
+ * Det ska finnas produktens namn, pris, knapp för att öka/minska/radera, totalpris
+ * Koppla ihop +/+ och radera knapparna med eventlisteners för att kunna öka och minska och radera innehållet
+ */
 const cartSection = document.querySelector('#cartsection'); //Hämta hela sektionen som ska visas/gömmas
 const cartList = document.querySelector('#cart'); //Hämta själva listhållarn där kundvagnens innehåll ska skrivas ut
 
 //funktion som skriver ut kundvagnens innehåll
-function printCart() { 
+function printCart() { //Rensa listan innan vi skriver ut den igen
   cartList.innerHTML = ''; //Om varukorgen är tom visas meddelandet "varukorgen är tom"
 
   for(let i = 0; i < cart.length; i++) { //Loppar igenom kundvagnen och skriver ut alla produkter i kundvagnen som klickas på
     cartList.innerHTML += `
-      <p>${cart[i].name}: ${cart[i].amount} st</p>
+      <article>${cart[i].name}: 
+        <button data-id="${cart[i].id}" class="decrease-cart-product">-</button>
+        ${cart[i].amount} st 
+        <button data-id="${cart[i].id}" class="increase-cart-product">+</button>
+        ${cart[i].price * cart[i].amount} kr
+        <button data-id="${i}" class="delete-product">Radera</button>
+      </article>
     `;
   }
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------- Knappar som +/- och raderar i kundvagnen ---------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+//Kopplar eventlisteners till knapparna +/-/radera i kundvagnen/korgen
+
+  const cartDecreaseButtons = document.querySelectorAll('button.decrease-cart-product');
+  cartDecreaseButtons.forEach((btn) => {
+    btn.addEventListener('click', decreaseProductFromCart);
+  });
+
+  const cartIncreaseButtons = document.querySelectorAll('button.increase-cart-product');
+  cartIncreaseButtons.forEach((btn) => {
+    btn.addEventListener('click', increaseProductFromCart);
+  });
+
+  const deleteButtons = document.querySelectorAll('button.delete-product');
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener('click', deleteProductFromCart);
+  });
 }
 
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------- Funktioner som +/- och raderar i kundvagnen --------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+function decreaseProductFromCart(e) {
+  const rowId = Number(e.target.dataset.id); //Hämta produktens id
+  const product = cart.find(product => product.id === rowId); //Hitta produkten i kundvagnen
+
+  product.amount -= 1; //Minskar antalet
+
+  //Om antalet blir 0, ta bort produkten helt ur kundvagnen
+  if (product.amount <= 0) { 
+    const index = cart.findIndex(product => product.id === rowId);
+    cart.splice(index, 1);
+  }
+  printCart(); //Skriver ut kundvagnen igen
+  updateCartTotals(); //Uppdaterar totalsumman
+}
+
+function increaseProductFromCart(e) {
+  const rowId = Number(e.target.dataset.id);
+  const product = cart.find(product => product.id === rowId);
+
+  product.amount += 1; //Ökar antalet
+  printCart();
+  updateCartTotals();
+}
+
+function deleteProductFromCart(e) {
+  const rowId = Number(e.target.dataset.id); //Hämtar produktens index i arrayen
+
+  cart.splice(rowId, 1); //Tar bort produkten helt ur kundvagnen
+
+  printCart();
+  updateCartTotals();
+}
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------ Kundvagnsknapp som är hidden/visible --------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+// Med Idt till kundkorgen så döljs och visas kundvagnen med knapp tryck på kundvagnen
 const cartButton = document.querySelector('#kundkorg'); //Hämtar knapp som öppnar/stänger kundvagnen 
 
 cartButton.addEventListener('click', () => { // När man klickar på kundvagnen togglas synligheten från hidden till visible
