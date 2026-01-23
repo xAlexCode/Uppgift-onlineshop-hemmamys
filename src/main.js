@@ -287,7 +287,7 @@ function highlightCartTotal() {
 
 // Tar bort highlight från totalsumman
 function removeCartTotalHighlight() {
-  cartTotalEl.classList.remove('highlight-price'); // tar bort CSS-klassen så highlight effekten försvinner
+  cartTotalElement.classList.remove('highlight-price'); // tar bort CSS-klassen så highlight effekten försvinner
 }
 // ----------------------------------------------------------------------------------------------------------------------------------
 // ------------------------------------------------------ Kundvagnen ----------------------------------------------------------------
