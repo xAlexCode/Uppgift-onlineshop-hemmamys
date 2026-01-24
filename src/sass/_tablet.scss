@@ -4,7 +4,7 @@
         height: 20rem;
     }
 
-   #cartsection {
+   #cartSection {
         width: 400px;
     }
 
@@ -20,6 +20,11 @@
 
     .products-list {
         grid-template-columns: repeat(2, 1fr);
+
+        img {
+            max-height: 300px;
+        }
+
     }
 
 }

@@ -7,15 +7,29 @@ $body-background: #dec7f1;
 //Background color for productcards
 $card-background: #73478A;
 
+//Background color cart/button
+$cart-background: #71b9c8;
+
 //Text color
-$heading-color: #f0e9e9;
+$heading-color: #eae6e6;
 $text-color: #522969;
+$text-dark: #2C2C2C;
+
 
 
 body {
     background-color: $body-background;
     color: white;
     margin: 0;
+
+    font-family: 'fira sans', sans-serif;
+
+    h1, h2, h3 {
+        font-family: 'dynapuff', system-ui;
+        letter-spacing: 2px;
+    }
+
+   
 }
 
 .banner {
@@ -46,24 +60,51 @@ header {
         h1 {
         margin: 0;
         color: $heading-color;
+        font-family: 'dynapuff', system-ui;
        }
+
+       #cartButton {
+            background-color: #eae6e6;
+            color: black;
+            padding: 0.8rem 0.8rem; 
+            border-radius: 6px;
+            border: none;
+            cursor: pointer; 
+            transition: background-color 0.2s ease, transform 0.2s ease;
+
+            &:hover {
+                background-color: $cart-background;
+                color: $text-dark;  //Kolla hur man kan få den att vara annan färg när den är klickad på 
+            }
+       }
+
     }
 }
 
-#cartsection {
+#cartSection {
     position: fixed;
-    top: 67px;
+    top: 75px;
     right: 0;
     width: 100%;
-    background-color: #71b9c8;
-    color: rgb(50, 49, 51);
+    background-color: $cart-background;
+    color: $text-dark;
     padding: 1rem;
     z-index: 1000;
     border-radius: 0 0 10px 10px;
-    border: 1px solid white;
+    border: 1px solid #eae6e6;
+
+    h2 {
+        color: $text-dark;
+    }
+
+    #cart {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
 
-#cartsection.hidden {
+#cartSection.hidden {
     display: none;
 }
 
@@ -94,7 +135,7 @@ header {
         .button button {
             background-color: $nav-background;
             color: $heading-color;
-            padding: 0.8rem 1rem; //padding funkar inte bra precis mellan mobil och tablet åtgärda!
+            padding: 0.8rem 0.8rem; 
             border-radius: 6px;
             border: none;
             cursor: pointer; 
@@ -102,7 +143,7 @@ header {
 
             &:hover {
                 background-color: #71b9c8;
-                color: #2C2C2C;  //Kolla hur man kan få den att vara annan färg när den är klickad på 
+                color: #2C2C2C;  
             }
         }
     }
@@ -118,19 +159,88 @@ header {
         border-radius: 8px;
         background-color: $card-background;
         padding: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    h3, p{
-        color: $heading-color;
+        margin-bottom: 1rem; 
+        display: flex;
+        flex-direction: column;
     }
 
     img {
         width: 100%;
-        max-height: 300px;
-        display: block;
+        max-height: 200px;
+        object-fit: cover;
         border-radius: 8px;
         border: #ffffff 2px solid;
+    }
+
+    .product-header h3 {
+        color: $heading-color;
+        font-size: 1.5rem;
+        
+    }
+
+    .metadata p {
+        color: $heading-color;
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .amount-label { 
+        color: $heading-color; 
+        display: block; 
+        padding-bottom: 0.3rem; 
+        padding-top: 1rem;
+    }
+
+    
+    .control-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .controls button {
+        background-color: $nav-background;
+        color: $heading-color;
+        border: none;
+        padding: 0.5rem 0.9rem;
+        font-size: 1.2rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        
+        &:hover {
+            background-color: $cart-background;
+            color: $text-dark;
+        }
+    }
+
+    .controls input {
+        width: 100%;
+        padding: 0.6rem;
+        border-radius: 6px;
+        border: none;
+        background-color: $heading-color;
+        color: $text-dark;
+    }
+
+    .buy {
+        background-color: $heading-color;
+        color: $text-dark;
+        border: none;
+        padding: 0.6rem;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        width: 100px;
+        margin-top: 1rem;
+        margin: 1rem auto 0;
+
+        &:hover {
+            background-color: $cart-background;
+        }
+
     }
 }
 

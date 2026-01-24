@@ -120,7 +120,7 @@ function printProducts() { //Funktion som skriver ut alla produkter på sidan
   const html = ` 
     <article>
       <img src="${product.img}" alt="${product.alt}" loading="lazy" width="640" height="426">
-      <div class="productheader">
+      <div class="product-header">
         <h3>${product.name}</h3>
       </div>
       <div class="metadata">
@@ -129,9 +129,12 @@ function printProducts() { //Funktion som skriver ut alla produkter på sidan
         <p>Kategori: ${product.category}</p>
       </div>
       <div class="controls">
-        <button class="decrease" aria-label="Minska antal" data-id="${product.id}">-</button>
-        <input type="number"  value="0" aria-label="Välj antal" id="amount-${product.id}" disabled>
-        <button class="increase" aria-label="Öka antal" data-id="${product.id}">+</button>
+        <label for="amount-${product.id}" class="amount-label">Välj antal:</label>
+          <div class="control-container">
+           <button class="decrease" aria-label="Minska antal" data-id="${product.id}">-</button>
+           <input type="number" value="0" aria-label="Välj antal" id="amount-${product.id}" disabled>
+           <button class="increase" aria-label="Öka antal" data-id="${product.id}">+</button>
+        </div>
       </div>
       <button class="buy" data-id="${product.id}">Lägg till</button>
     </article>
@@ -297,7 +300,7 @@ function removeCartTotalHighlight() {
  * Det ska finnas produktens namn, pris, knapp för att öka/minska/radera, totalpris
  * Koppla ihop +/+ och radera knapparna med eventlisteners för att kunna öka och minska och radera innehållet
  */
-const cartSection = document.querySelector('#cartsection'); //Hämta hela sektionen som ska visas/gömmas
+const cartSection = document.querySelector('#cartSection'); //Hämta hela sektionen som ska visas/gömmas
 const cartList = document.querySelector('#cart'); //Hämta själva listhållarn där kundvagnens innehåll ska skrivas ut
 
 //funktion som skriver ut kundvagnens innehåll
@@ -377,7 +380,7 @@ function deleteProductFromCart(e) {
 // ------------------------------------------ Kundvagnsknapp som är hidden/visible --------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------------------
 // Med Idt till kundkorgen så döljs och visas kundvagnen med knapp tryck på kundvagnen
-const cartButton = document.querySelector('#kundkorg'); //Hämtar knapp som öppnar/stänger kundvagnen 
+const cartButton = document.querySelector('#cartButton'); //Hämtar knapp som öppnar/stänger kundvagnen 
 
 cartButton.addEventListener('click', () => { // När man klickar på kundvagnen togglas synligheten från hidden till visible
   cartSection.classList.toggle('visible');
@@ -385,3 +388,6 @@ cartButton.addEventListener('click', () => { // När man klickar på kundvagnen 
 });
 
 printProducts(); //skriver ut produkterna på sidan
+
+
+//Först skriva checkoutBtn själv med en visual/hidden klass som har beställningsformuläret
