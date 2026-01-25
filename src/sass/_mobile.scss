@@ -95,12 +95,120 @@ header {
     #cart {
         display: flex;
         flex-direction: column;
+        gap: 0.8rem;
+        padding-top: 1rem;
+    }
+
+    .cart-item {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto;
+        align-items: center;
+        color: $text-dark;
         gap: 0.5rem;
+    }
+
+    .cart-name { 
+        font-weight: bold; 
+    } 
+    
+    .cart-controls { 
+        display: flex; 
+        align-items: center; 
+    } 
+    
+    .cart-amount { 
+        width: 3rem;
+        text-align: center; 
+        font-family: 'fira code', sans-serif; 
+    } 
+    
+    .cart-price {  
+        width: 3rem;
+        text-align: right; 
+        font-weight: bold;
+    }
+
+    .increase-cart-product, .decrease-cart-product {
+        background-color: $heading-color;
+        color: $text-dark;
+        border: none;
+        padding: 0.3rem 0.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            background-color: $nav-background;
+            color: $heading-color;  
+            }
+    }
+
+    .delete-product {
+        background-color: $heading-color;
+        color: $text-dark;
+        border: none;
+        padding: 0.3rem 0.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            background-color: $nav-background;
+            color: $heading-color;  
+            }
+    }
+
+    .cart-total {
+        margin-top: 0;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: right;
+        padding: 0.8rem 0;
+        border-bottom: #eae6e6 2px solid;
+    }
+
+    .checkoutBtn {
+        margin: 1rem auto 0;
+        display: block;
+        padding: 0.8rem;
+        background-color: $heading-color;
+        color: $text-dark;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            background-color: $nav-background;
+            color: $heading-color;  
+        }
     }
 }
 
 #cartSection.hidden {
     display: none;
+}
+
+@media screen and (min-width: 400px) {
+    
+    #cartSection {
+        .increase-cart-product, .decrease-cart-product {
+            padding: 0.5rem 0.8rem;
+        }
+
+        .delete-product {
+            padding: 0.5rem 0.8rem;
+        }
+
+        .cart-amount { 
+            width: 4rem;
+        } 
+    
+        .cart-price {  
+           width: 4rem;
+        }
+    }
 }
 
 .sort {

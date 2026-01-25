@@ -309,11 +309,14 @@ function printCart() { //Rensa listan innan vi skriver ut den igen
 
   for(let i = 0; i < cart.length; i++) { //Loppar igenom kundvagnen och skriver ut alla produkter i kundvagnen som klickas på
     cartList.innerHTML += `
-      <article>${cart[i].name}: 
-        <button data-id="${cart[i].id}" class="decrease-cart-product">-</button>
-        ${cart[i].amount} st 
-        <button data-id="${cart[i].id}" class="increase-cart-product">+</button>
-        ${cart[i].price * cart[i].amount} kr
+      <article class="cart-item">
+        <span class="cart-name">${cart[i].name}</span>
+          <div class="cart-controls">
+          <button data-id="${cart[i].id}" class="decrease-cart-product">-</button>
+          <span class="cart-amount">${cart[i].amount} st</span>
+          <button data-id="${cart[i].id}" class="increase-cart-product">+</button>
+        </div>
+        <span class="cart-price">${cart[i].price * cart[i].amount} kr</span>
         <button data-id="${i}" class="delete-product">Radera</button>
       </article>
     `;

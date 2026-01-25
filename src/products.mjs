@@ -15,7 +15,7 @@ const products = [ //Array med produkter till sidan
   {
     id: 2,
     name: 'Ferrero Rocher', 
-    price: 12, 
+    price: 99, 
     rating: 3, 
     category: 'choklad', 
     img: 'img/Ferrerorocher.jpg',
@@ -24,7 +24,7 @@ const products = [ //Array med produkter till sidan
   {
     id: 3,
     name: 'Bubble Fizz', 
-    price: 9, 
+    price: 10, 
     rating: 5, 
     category: 'sött', 
     img: 'img/Bubblefizz.jpg',
@@ -52,7 +52,7 @@ const products = [ //Array med produkter till sidan
   {
     id: 6,
     name: 'Gummibjörnar', 
-    price: 10, 
+    price: 14, 
     rating: 1, 
     category: 'sött', 
     img: 'img/Gummibjornar.jpg',
@@ -88,7 +88,7 @@ const products = [ //Array med produkter till sidan
   { 
     id: 10,
     name: 'M&Ms', 
-    price: 2, 
+    price: 23, 
     rating: 5, 
     category: 'choklad', 
     img: 'img/Mms.jpg',
@@ -97,7 +97,7 @@ const products = [ //Array med produkter till sidan
   {
     id: 11,
     name: 'Sura vingummin', 
-    price: 14, 
+    price: 37, 
     rating: 3, 
     category: 'surt', 
     img: 'img/Suravingum.jpg',
@@ -106,7 +106,7 @@ const products = [ //Array med produkter till sidan
   { 
     id: 12,
     name: 'Fruktkaramell', 
-    price: 5, 
+    price: 63, 
     rating: 1, 
     category: 'sött', 
     img: 'img/Karameller.jpg',
