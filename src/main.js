@@ -380,17 +380,37 @@ function deleteProductFromCart(e) {
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------
-// ------------------------------------------ Kundvagnsknapp som är hidden/visible --------------------------------------------------
+// ------------------------------------------ Varukorgsknapp som är hidden/visible --------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------------------
 // Med Idt till kundkorgen så döljs och visas kundvagnen med knapp tryck på kundvagnen
 const cartButton = document.querySelector('#cartButton'); //Hämtar knapp som öppnar/stänger kundvagnen 
 
-cartButton.addEventListener('click', () => { // När man klickar på kundvagnen togglas synligheten från hidden till visible
+cartButton.addEventListener('click', () => { // När man klickar på varukorg togglas synligheten från hidden till visible
   cartSection.classList.toggle('visible');
   cartSection.classList.toggle('hidden');
 });
 
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------ Beställningsformulär som är hidden/visible --------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+//Kassa knappen ska leda till beställningsformuläret och även kunna på knapptryck gå tillbaka
+const checkoutBtn = document.querySelector('.checkoutBtn');
+const checkoutSection = document.querySelector('#checkoutSection');
+const backToCart = document.querySelector('#backToCart');
+
+checkoutBtn.addEventListener('click', () => { // När man klickar på kassa togglas synligheten från hidden till visible
+  cartSection.classList.remove('visible');
+  cartSection.classList.add('hidden');
+
+  checkoutSection.classList.remove('hidden');
+});
+
+backToCart.addEventListener('click', () => {
+  checkoutSection.classList.add('hidden');
+  cartSection.classList.remove('hidden');
+});
+
+
 printProducts(); //skriver ut produkterna på sidan
 
 
-//Först skriva checkoutBtn själv med en visual/hidden klass som har beställningsformuläret
