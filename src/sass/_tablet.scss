@@ -1,7 +1,7 @@
 @media screen and (min-width: 640px) {
     
     .banner {
-        height: 20rem;
+        height: 25rem;
     }
 
    #cartSection {
@@ -25,6 +25,22 @@
             max-height: 300px;
         }
 
+    }
+
+    .footer {
+        flex-direction: row;
+        text-align: left;
+        justify-content: space-between;
+        
+        .footer-left {
+            text-align: left;
+        }
+        .footer-center {
+            text-align: center; 
+        }
+        .footer-right {
+            text-align: right;
+        }
     }
 
 }
