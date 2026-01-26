@@ -1,20 +1,24 @@
 ---
 description: 'Specific rules for the code review agent on Pull Requests.'
-excludeAgent: ["coding"] 
+excludeAgent: ['coding']
 ---
 
 # Code Review Agent Instructions
 
 ## General
+
 - Check that the primary files are not located under the `.github` folder but are at root level.
 - Check for any spelling errors.
 
 ## .gitignore
+
 - Check that there is a `.gitignore` file present.
 - Check that the `.gitignore` file has the most commonly ignored files defined.
 
 ## HTML
+
 ### General
+
 - Check that the `lang` attribute in the `<html>` tag is consistent with the page language.
 - Check that the language is consistent throughout the document, i.e. no mixing of Swedish, English and any other languages.
 - Check that semantic tags are used as widely as possible.
@@ -24,15 +28,18 @@ excludeAgent: ["coding"]
 - Check that no text is written in uppercase. If it is written in uppercase, recommend the author to consider setting the uppercase property in CSS instead.
 
 ### Image tags
+
 - Ensure images have a descriptive `alt`-text set and that the text doesn't contain "Picture of" or "Bild på".
 - Ensure images have `width` and `height` attributes set.
 - If the image tag is missing `loading="lazy"`, recommend it to be added.
 
 ### Forms
+
 - Ensure all form fields have connected labels, either through the `id` property or by nesting the form field inside the `<label>` tag.
 - Ensure all form fields have the correct type set, based on their label. For example if the label is "email", the corresponding `<input>` `type` should be `email`.
 
 ### Accessibility
+
 - Check the HTML for accessibility.
 - Check in CSS that no font size is under 16px or 1rem. Otherwise, notify the author that it is not recommended to use smaller font sizes than 16px or 1rem.
 - Check that the main navigation uses the `<nav>` tag.
@@ -41,6 +48,7 @@ excludeAgent: ["coding"]
 - If there is a menu button, check that it is a `<button>` element and that it contains text, either by `aria-label` or actual text inside the element.
 
 ### Best practices and coding conventions
+
 - Flag any `<br>` tags, and check if they are required or if CSS could be used instead to create the spacing.
 - Flag use of `<i>` and `<b>` tags.
 - Flag use of any deprecated HTML tags.
@@ -50,19 +58,23 @@ excludeAgent: ["coding"]
 - Ensure all external links declared with an `<a>` tags have security applied by having the `rel="noopener noreferrer"` attribute and attribute value present.
 
 ### SEO
+
 - Check that the meta tag defining an author is set.
 - Check that Open Graph meta tags are defined, at least `og:title`, `og:type`, `og:url` and `og:image`.
 
 ### Fonts
+
 - If Google Fonts have been added, check that there are no duplicate `<link>` tags in `<head>`.
 
 ## Image files
+
 - Check that images follow web naming standards; no spaces, all lowercase, special characters and no international (umlaut) characters
 - Notify if any image file exceeds 1 MB in size
 - If the image is in PNG format, analyze if it has any transparency, otherwise recommend it to be converted to a more compressed format like JPG.
 - If the image is used as a profile picture, flag if the filename is not `firstname_lastname` and mention SEO benefits of naming image files correctly.
 
 ## CSS
+
 - Check that the document is correctly formatted/indented. If it is not, recommend the author to watch the following video: https://www.youtube.com/watch?v=SPUDVy11FCk.
 - Flag any uses of `id` selectors
 - Check that all selectors are in English
@@ -79,16 +91,20 @@ excludeAgent: ["coding"]
 - Check for consistency in formatting in the document, i.e. that there is a space between the selector name and the curly brace. The document should not contain one selector looking like this `html, body {` (with space) and another one looking like this: `@media (max-width: 1200px){` (without space).
 
 ### Formatting
+
 - Check all code for correct indentation. If it's not correctly formatted, recommend the author to watch the following video: https://www.youtube.com/watch?v=SPUDVy11FCk
 
 ### Sass/SCSS
+
 - If SCSS/Sass has been used in the project, check that no `*.css` file has been committed. If it has been committed, recommend to add it to `.gitignore` instead.
 - Check that no `*.css.map` file has been committed. If a `map` file is present, recommend it to be added to `.gitignore`.
 
 ## README file
+
 - Check that the `README.md` file contains some sort of description of what the repository is about, and no generic classroom assignment instructions.
 
 ## JavaScript
+
 - Variables should have meaningful and pronounceable variable names.
 - Check that variables are declared with the same naming convention throughout the document.
 - Use the same vocabulary for the same type of variable.

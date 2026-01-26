@@ -4,7 +4,7 @@ import products from './products.mjs';
 /**
  * Flyttade över produkterna till products.mjs för att ge lite struktur i dokumentet och göra det lättare att läsa.
  * Tanke för html strukturen i js, varje produkt-div ska innehålla ett h2 element för produktens namn och ett p element för produktens pris.
- * 
+ *
  */
 const cart = []; //En kundvagn som är en array
 
@@ -35,17 +35,17 @@ function filterProductsListShowAll() {
 }
 
 function filterProductListSweetCategory() {
-  filteredProducts = products.filter((product) => product.category === 'sött');
+  filteredProducts = products.filter(product => product.category === 'sött');
   printProducts();
 }
 
 function filterProductListSourCategory() {
-  filteredProducts = products.filter((product) => product.category === 'surt');
+  filteredProducts = products.filter(product => product.category === 'surt');
   printProducts();
 }
 
 function filterProductListChocolateCategory() {
-  filteredProducts = products.filter((product) => product.category === 'choklad');
+  filteredProducts = products.filter(product => product.category === 'choklad');
   printProducts();
 }
 
@@ -58,7 +58,7 @@ const sortByNameBtn = document.querySelector('#sortNameBtn');
 const sortRatingBtn = document.querySelector('#sortRatingBtn');
 const sortCategoryBtn = document.querySelector('#sortCategoryBtn');
 
-sortByPriceBtn.addEventListener('click', sortByPrice);  //Lägger till ett event vid click
+sortByPriceBtn.addEventListener('click', sortByPrice); //Lägger till ett event vid click
 sortByNameBtn.addEventListener('click', sortByName);
 sortRatingBtn.addEventListener('click', sortByRating);
 sortCategoryBtn.addEventListener('click', sortByCategory);
@@ -71,8 +71,7 @@ function sortByPrice() {
 
 // Funktion för att sortera produkter efter namn (alfabetisk ordning) kort version
 function sortByName() {
-  filteredProducts.sort((product1, product2) => 
-  product1.name.localeCompare(product2.name));
+  filteredProducts.sort((product1, product2) => product1.name.localeCompare(product2.name));
   printProducts(); //Skriver ut produkterna igen efter sortering
 }
 
@@ -84,8 +83,7 @@ function sortByRating() {
 
 // Funktion för att sortera produkter efter kategori
 function sortByCategory() {
-  filteredProducts.sort((product1, product2) => 
-  product1.category.localeCompare(product2.category));
+  filteredProducts.sort((product1, product2) => product1.category.localeCompare(product2.category));
   printProducts(); //Skriver ut produkterna igen efter sortering
 }
 
@@ -110,14 +108,16 @@ function sortByCategory() {
 // ------------------------------------------------------ Skapa produktlista --------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------------------
 
-function printProducts() { //Funktion som skriver ut alla produkter på sidan
+function printProducts() {
+  //Funktion som skriver ut alla produkter på sidan
   productsListing.innerHTML = ''; // Tömmer productListing innan vi lägger till nya produkter
 
-  for (let i = 0; i < filteredProducts.length; i++) { // en loop som går igenom alla produkter
-    const product = filteredProducts[i];  //Detta är den aktuella produkten
+  for (let i = 0; i < filteredProducts.length; i++) {
+    // en loop som går igenom alla produkter
+    const product = filteredProducts[i]; //Detta är den aktuella produkten
 
-  //Skapar en HTML-struktur för produkten
-  const html = ` 
+    //Skapar en HTML-struktur för produkten
+    const html = ` 
     <article>
       <img src="${product.img}" alt="${product.alt}" loading="lazy" width="640" height="426">
       <div class="product-header">
@@ -142,39 +142,38 @@ function printProducts() { //Funktion som skriver ut alla produkter på sidan
     productsListing.innerHTML += html; //Lägger tiill html i DOM:en
   }
 
-// ----------------------------------------------------------------------------------------------------------------------------------
-// ------------------------------------------------------ Skapa knappar +/- antal ---------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------------------
-/**
- * Skapa en -/+ button och ett inputfält med antal i, som man sedan vid click kunna toggla antalet upp och ned
- * Det ska finnas en lägg till i kundvagnsknapp. 
- * Ge varje produkt ett ID med en siffra för att skilja från andra produkter, ex inte ska krocka med namn om det finns två karameller för olika pris. 
- * Dessa måste ligga i printproducts
-*/
-const increaseButton = document.querySelectorAll('#products button.increase');
-increaseButton.forEach((btn) => {
-  btn.addEventListener('click', increaseProductCount);
-});
+  // ----------------------------------------------------------------------------------------------------------------------------------
+  // ------------------------------------------------------ Skapa knappar +/- antal ---------------------------------------------------
+  // ----------------------------------------------------------------------------------------------------------------------------------
+  /**
+   * Skapa en -/+ button och ett inputfält med antal i, som man sedan vid click kunna toggla antalet upp och ned
+   * Det ska finnas en lägg till i kundvagnsknapp.
+   * Ge varje produkt ett ID med en siffra för att skilja från andra produkter, ex inte ska krocka med namn om det finns två karameller för olika pris.
+   * Dessa måste ligga i printproducts
+   */
+  const increaseButton = document.querySelectorAll('#products button.increase');
+  increaseButton.forEach(btn => {
+    btn.addEventListener('click', increaseProductCount);
+  });
 
-const decreaseButton = document.querySelectorAll('#products button.decrease');
-decreaseButton.forEach((btn) => {
-  btn.addEventListener('click', decreaseProductCount);
-});
+  const decreaseButton = document.querySelectorAll('#products button.decrease');
+  decreaseButton.forEach(btn => {
+    btn.addEventListener('click', decreaseProductCount);
+  });
 
-// ----------------------------------------------------------------------------------------------------------------------------------
-//  ------------------------------------------------------ Skapa köp knapp ----------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------------------
-/**
- * Måste också ligga i printproducts funktionen
- * Skapa en köp knapp, som man vid klick lägger till antal godisar i kundvagnen.
- */
+  // ----------------------------------------------------------------------------------------------------------------------------------
+  //  ------------------------------------------------------ Skapa köp knapp ----------------------------------------------------------
+  // ----------------------------------------------------------------------------------------------------------------------------------
+  /**
+   * Måste också ligga i printproducts funktionen
+   * Skapa en köp knapp, som man vid klick lägger till antal godisar i kundvagnen.
+   */
 
-const buyButton = document.querySelectorAll('#products button.buy');
-console.log(buyButton);
-buyButton.forEach((btn) => {
-  btn.addEventListener('click', addProductToCart);
-});
-
+  const buyButton = document.querySelectorAll('#products button.buy');
+  console.log(buyButton);
+  buyButton.forEach(btn => {
+    btn.addEventListener('click', addProductToCart);
+  });
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------
@@ -182,30 +181,30 @@ buyButton.forEach((btn) => {
 // ----------------------------------------------------------------------------------------------------------------------------------
 //Funktion för att öka antalet godisar i input rutan med + knappen
 function increaseProductCount(e) {
-  const clickedBtnId = e.target.dataset.id;  // Hämtar ID:t från knappen som klickades ex 3
+  const clickedBtnId = e.target.dataset.id; // Hämtar ID:t från knappen som klickades ex 3
   const input = document.querySelector(`#amount-${clickedBtnId}`); // Hittar rätt input‑fält baserat på ID:t ex #amount-3
   input.value = Number(input.value) + 1; // Säger att inputvärdet ska öka med +1
 }
 
 //Funktion för att minska antalet godisar i input rutan med + knappen
 function decreaseProductCount(e) {
-  const clickedBtnId = e.target.dataset.id;  // Hämtar ID:t från knappen som klickades ex 3
+  const clickedBtnId = e.target.dataset.id; // Hämtar ID:t från knappen som klickades ex 3
   const input = document.querySelector(`#amount-${clickedBtnId}`); // Hittar rätt input‑fält baserat på ID:t ex #amount-3
-  
-  let amount = Number(input.value) -1;// Om värdet redan är 1 eller mindre ska vi inte minska mer och return stoppar funktionen direkt
-    if (amount < 0) {
-      amount = 0;
-    }
-    input.value = amount;
+
+  let amount = Number(input.value) - 1; // Om värdet redan är 1 eller mindre ska vi inte minska mer och return stoppar funktionen direkt
+  if (amount < 0) {
+    amount = 0;
   }
+  input.value = amount;
+}
 
 // ----------------------------------------------------------------------------------------------------------------------------------
 // --------------------------------------------- Funktion lägg till produkt i kundvagn ----------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------------------
 //Skapa funktion som gör att artikeln läggs in i kundvagnen vid klick och senare antalet.
 /**
- * Skapa ett event vid klick och kalla funktionen addProductToCart. 
- * Logga att köp knappen faktiskt skriver ut vid knappttryck. 
+ * Skapa ett event vid klick och kalla funktionen addProductToCart.
+ * Logga att köp knappen faktiskt skriver ut vid knappttryck.
  * Vid knapptryck måste vi hitta vilken produkt det gäller och dess id.
  * Leta upp produkten i listan med id, om ingen produkt hittas return/avbryt
  * Hämta input-fältet med antal, läs av hur många produkter det är, är det mindre än 1 avbryt
@@ -214,33 +213,35 @@ function decreaseProductCount(e) {
  */
 
 // Funktion som lägger till en produkt i kundvagnen när användaren klickar på "köp"
-function addProductToCart (e) {
-  console.log("köp knapp klickad");
+function addProductToCart(e) {
+  console.log('köp knapp klickad');
 
   const clickedBtnId = Number(e.target.dataset.id); // Hämta id från knappen som klickades
-  console.log("Id från knappen", clickedBtnId); //Loggar vilket Id som hämtats från knapptrycket ex 3
+  console.log('Id från knappen', clickedBtnId); //Loggar vilket Id som hämtats från knapptrycket ex 3
   const product = products.find(product => product.id === clickedBtnId); //Söker upp rätt produkt från arrayen baserat på ID
-  console.log("hittad produkten i products", product); //Loggar när den hittat hela objektet med namn, pris osv
+  console.log('hittad produkten i products', product); //Loggar när den hittat hela objektet med namn, pris osv
 
-  if (product === undefined) { // om ingen produkt hittas (undefined) avbryt funktionen
+  if (product === undefined) {
+    // om ingen produkt hittas (undefined) avbryt funktionen
     return;
   }
 
   //Kolla hur många produkter kunden vill beställa från input-fältet och hämta listan
   const inputField = document.querySelector(`#amount-${clickedBtnId}`);
   let amount = Number(inputField.value);
-  if (amount < 1) { //Om antalet är mindre än 1 avbryt
+  if (amount < 1) {
+    //Om antalet är mindre än 1 avbryt
     return;
   }
 
   inputField.value = 0; // återställ input-fältet till 0 efter tryck på köp
 
   const index = cart.findIndex(product => product.id === clickedBtnId); // kolla om produkten redan finns i cart -1 finns det inte i varukorgen och är det 0,1,2.. finns det
-  if (index === -1) {  //om produkten inte finns i cart, sätt första produkten till 1
-    product.amount = amount; 
+  if (index === -1) {
+    //om produkten inte finns i cart, sätt första produkten till 1
+    product.amount = amount;
     cart.push(product); // Lägg till produkten i kundvagnen
-  } 
-  else {
+  } else {
     product.amount += amount; //Produkten finns redan, öka antalet
   }
 
@@ -255,12 +256,12 @@ function addProductToCart (e) {
  * Uppdaterar totalsumman i kundvagnen genom att summera pris gånger antal och skriver ut resultatet i DOM-trädet
  */
 
-const cartTotalElement = document.querySelector ('#cartTotal');
+const cartTotalElement = document.querySelector('#cartTotal');
 function updateCartTotals() {
-
   let cartTotal = 0; //Start värde för totalsumman
 
-  for (let i = 0; i < cart.length;i++) { //Loopa igenom alla produkter i kundvagnen
+  for (let i = 0; i < cart.length; i++) {
+    //Loopa igenom alla produkter i kundvagnen
     const productSum = cart[i].price * cart[i].amount; // Räkna ut delsumman för varje produkt (pris * antal)
     cartTotal += productSum; //Lägg till delsumman till den totala summan
   }
@@ -281,7 +282,7 @@ function updateCartTotals() {
 
 //Lägger till highlight på totalsumman
 function highlightCartTotal() {
-  cartTotalElement.classList.add('highlight-price'); //Detta lägger till CSS-klassen som ändrar färg på texten 
+  cartTotalElement.classList.add('highlight-price'); //Detta lägger till CSS-klassen som ändrar färg på texten
 
   const SECONDS_IN_MS = 1000; //Tidsberäkning 1 sekund i milisekunder
   const SECONDS = 1; //Tidsberäkning 1 sekund
@@ -304,10 +305,12 @@ const cartSection = document.querySelector('#cartSection'); //Hämta hela sektio
 const cartList = document.querySelector('#cart'); //Hämta själva listhållarn där kundvagnens innehåll ska skrivas ut
 
 //funktion som skriver ut kundvagnens innehåll
-function printCart() { //Rensa listan innan vi skriver ut den igen
+function printCart() {
+  //Rensa listan innan vi skriver ut den igen
   cartList.innerHTML = ''; //Om varukorgen är tom visas meddelandet "varukorgen är tom"
 
-  for(let i = 0; i < cart.length; i++) { //Loppar igenom kundvagnen och skriver ut alla produkter i kundvagnen som klickas på
+  for (let i = 0; i < cart.length; i++) {
+    //Loppar igenom kundvagnen och skriver ut alla produkter i kundvagnen som klickas på
     cartList.innerHTML += `
       <article class="cart-item">
         <span class="cart-name">${cart[i].name}</span>
@@ -322,23 +325,23 @@ function printCart() { //Rensa listan innan vi skriver ut den igen
     `;
   }
 
-// ----------------------------------------------------------------------------------------------------------------------------------
-// ------------------------------------------- Knappar som +/- och raderar i kundvagnen ---------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------------------
-//Kopplar eventlisteners till knapparna +/-/radera i kundvagnen/korgen
+  // ----------------------------------------------------------------------------------------------------------------------------------
+  // ------------------------------------------- Knappar som +/- och raderar i kundvagnen ---------------------------------------------
+  // ----------------------------------------------------------------------------------------------------------------------------------
+  //Kopplar eventlisteners till knapparna +/-/radera i kundvagnen/korgen
 
   const cartDecreaseButtons = document.querySelectorAll('button.decrease-cart-product');
-  cartDecreaseButtons.forEach((btn) => {
+  cartDecreaseButtons.forEach(btn => {
     btn.addEventListener('click', decreaseProductFromCart);
   });
 
   const cartIncreaseButtons = document.querySelectorAll('button.increase-cart-product');
-  cartIncreaseButtons.forEach((btn) => {
+  cartIncreaseButtons.forEach(btn => {
     btn.addEventListener('click', increaseProductFromCart);
   });
 
   const deleteButtons = document.querySelectorAll('button.delete-product');
-  deleteButtons.forEach((btn) => {
+  deleteButtons.forEach(btn => {
     btn.addEventListener('click', deleteProductFromCart);
   });
 }
@@ -353,7 +356,7 @@ function decreaseProductFromCart(e) {
   product.amount -= 1; //Minskar antalet
 
   //Om antalet blir 0, ta bort produkten helt ur kundvagnen
-  if (product.amount <= 0) { 
+  if (product.amount <= 0) {
     const index = cart.findIndex(product => product.id === rowId);
     cart.splice(index, 1);
   }
@@ -383,9 +386,10 @@ function deleteProductFromCart(e) {
 // ------------------------------------------ Varukorgsknapp som är hidden/visible --------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------------------
 // Med Idt till kundkorgen så döljs och visas kundvagnen med knapp tryck på kundvagnen
-const cartButton = document.querySelector('#cartButton'); //Hämtar knapp som öppnar/stänger kundvagnen 
+const cartButton = document.querySelector('#cartButton'); //Hämtar knapp som öppnar/stänger kundvagnen
 
-cartButton.addEventListener('click', () => { // När man klickar på varukorg togglas synligheten från hidden till visible
+cartButton.addEventListener('click', () => {
+  // När man klickar på varukorg togglas synligheten från hidden till visible
   cartSection.classList.toggle('visible');
   cartSection.classList.toggle('hidden');
 });
@@ -398,7 +402,8 @@ const checkoutBtn = document.querySelector('.checkoutBtn');
 const checkoutSection = document.querySelector('#checkoutSection');
 const backToCart = document.querySelector('#backToCart');
 
-checkoutBtn.addEventListener('click', () => { // När man klickar på kassa togglas synligheten från hidden till visible
+checkoutBtn.addEventListener('click', () => {
+  // När man klickar på kassa togglas synligheten från hidden till visible
   cartSection.classList.remove('visible');
   cartSection.classList.add('hidden');
 
@@ -410,7 +415,4 @@ backToCart.addEventListener('click', () => {
   cartSection.classList.remove('hidden');
 });
 
-
 printProducts(); //skriver ut produkterna på sidan
-
-

@@ -3,23 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Assignment 1 with javascript">
+    <meta name="description" content="Assignment 1 with javascript" />
     <title>FED25D | Inlämningsuppgift 1</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Fira+Code:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>"
+    />
   </head>
-  
-  <body>
 
+  <body>
     <header>
       <nav>
         <h1>Hemmamys</h1>
         <button id="cartButton">Varukorg</button>
       </nav>
     </header>
-         
+
     <div class="banner"></div>
 
     <section id="cartSection" class="hidden">
@@ -31,23 +36,30 @@
 
     <section id="checkoutSection" class="hidden">
       <div class="checkout-card">
-      <button id="backToCart">Tillbaka</button>
-      <h2>Beställningsformulär</h2>
+        <button id="backToCart">Tillbaka</button>
+        <h2>Beställningsformulär</h2>
 
-      <form>
-        <fieldset>
-          
-        </fieldset>
-      </form>
+        <form id="checkoutForm">
+          <div class="form-group">
+            <label for="firstname">Förnamn</label>
+            <input id="firstName" name="firstName" type="text" />
+          </div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+        </form>
       </div>
-      
     </section>
 
     <main>
       <section class="sort">
         <div class="left">
           <h2>Sortera:</h2>
-          <div class="button">          
+          <div class="button">
             <button id="sortNameBtn">A-Z</button>
             <button id="sortPriceBtn">Pris</button>
             <button id="sortRatingBtn">Betyg</button>
@@ -57,35 +69,35 @@
 
         <div class="right">
           <h2>Filtrera:</h2>
-          <div class="button"> 
-            <button id="filterShowAllBtn">Visa alla</button> 
+          <div class="button">
+            <button id="filterShowAllBtn">Visa alla</button>
             <button id="filterSweetBtn">Sött</button>
             <button id="filterSourBtn">Surt</button>
             <button id="filterChocolateBtn">Choklad</button>
           </div>
-        </div>  
+        </div>
       </section>
 
-      
-      <section class="products-list" id="products"></section><!-- Add products with JS -->
+      <section class="products-list" id="products"></section>
+      <!-- Add products with JS -->
       <section>
-       <!--- Kunduppgifter kommer senare -->
+        <!--- Kunduppgifter kommer senare -->
       </section>
     </main>
-    
+
     <footer class="footer">
-        <div class="footer-left">
-            <p>Godisgatan 27</p>
-            <p>354 42 Växjö</p>
-        </div>
-        <div class="footer-center">
-            <p>Öppet 8.00 - 15.00</p>
-            <p>Facebook | Instagram | Twitter</p>
-        </div>
-        <div class="footer-right">
-            <p>info@hemmamys.com</p>
-            <p>070-123 45 67</p>
-        </div>
+      <div class="footer-left">
+        <p>Godisgatan 27</p>
+        <p>354 42 Växjö</p>
+      </div>
+      <div class="footer-center">
+        <p>Öppet 8.00 - 15.00</p>
+        <p>Facebook | Instagram | Twitter</p>
+      </div>
+      <div class="footer-right">
+        <p>info@hemmamys.com</p>
+        <p>070-123 45 67</p>
+      </div>
     </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
