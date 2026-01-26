@@ -3,7 +3,7 @@
  */
 
 const products = [
-  //Array med produkter till sidan
+  // Array med produkter till sidan
   {
     id: 1,
     name: 'Sura nappar',

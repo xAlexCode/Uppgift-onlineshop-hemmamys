@@ -1,14 +1,15 @@
-import js from "@eslint/js";
-import globals from "globals";
-import { defineConfig } from "eslint/config";
+import js from '@eslint/js';
+import globals from 'globals';
+import { defineConfig } from 'eslint/config';
 import stylistic from '@stylistic/eslint-plugin';
 
 export default defineConfig([
-  { files: ["**/*.{js,mjs,cjs}"], //Stjärnor kollar samtliga filer, sen har vi valt javascript filer
-    plugins: {  //Plugin för javascript och EsLint Stylistic
+  {
+    files: ['**/*.{js,mjs,cjs}'], // Stjärnor kollar samtliga filer, sen har vi valt javascript filer
+    plugins: { // Plugin för javascript och EsLint Stylistic
       js,
-      '@stylistic': stylistic, 
-    }, 
+      '@stylistic': stylistic,
+    },
     rules: {
       '@stylistic/array-bracket-newline': ['error', { minItems: 4, multiline: true }],
       '@stylistic/array-bracket-spacing': ['error', 'never'],
@@ -27,7 +28,7 @@ export default defineConfig([
       '@stylistic/key-spacing': ['error', { afterColon: true, beforeColon: false }],
       '@stylistic/keyword-spacing': ['error', { before: true }],
       '@stylistic/linebreak-style': ['error', 'unix'],
-      '@stylistic/max-len': ['error', { code: 120 }],
+      '@stylistic/max-len': ['error', { code: 210 }], // Ökat tillfälligt från 120 då jag vill skriva kommentarer som är längre
       '@stylistic/lines-around-comment': ['error', { beforeBlockComment: true }],
       '@stylistic/lines-between-class-members': ['error', 'always'],
       '@stylistic/max-statements-per-line': ['error', { max: 1 }],
@@ -44,7 +45,12 @@ export default defineConfig([
       '@stylistic/object-curly-spacing': ['error', 'always'],
       '@stylistic/operator-linebreak': ['error', 'after'],
       '@stylistic/padded-blocks': ['error', 'never'],
-      '@stylistic/padding-line-between-statements': ['error', { blankLine: 'always', prev: '*', next: 'return' }],
+      '@stylistic/padding-line-between-statements': [
+        'error',
+        {
+          blankLine: 'always', prev: '*', next: 'return',
+        },
+      ],
       '@stylistic/quote-props': ['error', 'consistent-as-needed'],
       '@stylistic/quotes': ['error', 'single'],
       '@stylistic/rest-spread-spacing': ['error', 'never'],
@@ -68,6 +74,7 @@ export default defineConfig([
       'no-unused-vars': 'warn',
     },
 
-    extends: ["js/recommended"], //Regler som den använder sig av
-    languageOptions: { globals: globals.browser } }, //Vilket miljö det körs i detta fall webbläsaren
+    extends: ['js/recommended'], // Regler som den använder sig av
+    languageOptions: { globals: globals.browser },
+  }, // Vilket miljö det körs i detta fall webbläsaren
 ]);

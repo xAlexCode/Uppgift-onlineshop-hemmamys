@@ -42,15 +42,90 @@
         <form id="checkoutForm">
           <div class="form-group">
             <label for="firstname">Förnamn</label>
-            <input id="firstName" name="firstName" type="text" />
+            <input id="firstName" name="firstName" type="text">
           </div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
+          <div class="form-group">
+            <label for="lastname">Förnamn</label>
+            <input id="lastName" name="lastName" type="text">
+          </div>
+          <div class="form-group">
+            <label for="adress">Adress</label>
+            <input id="adress" name="adress" type="text">
+          </div>
+          <div class="form-group">
+            <label for="zip">Postnummer</label>
+            <input id="zip" name="zip" type="text">
+          </div>
+          <div class="form-group">
+            <label for="city">Postort</label>
+            <input id="city" name="city" type="text">
+          </div>
+          <div class="form-group">
+            <label for="gateCode">Portkod (Valfritt)</label>
+            <input id="gateCode" name="gateCode" type="text">
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input id="phone" name="phone" type="text">
+          </div>
+          <div class="form-group">
+            <label for="email">E-post</label>
+            <input id="email" name="email" type="text">
+          </div>
+
+          <fieldset>
+            <legend>Betalsätt</legend>
+
+            <label>
+              <input type="radio" name="payment" value="card" checked>
+              Kort
+            </label>
+
+            <label>
+              <input type="radio" name="payment" value="invoice">
+              Faktura
+            </label>
+          </fieldset>
+
+          <div id="ssnContainer" class="form-group hidden"> <!--snn-socialsecuritynumber fanns inget kortare, visas bara vid faktura-->
+            <label for="ssn">Personnummer (ÅÅÅÅMMDD-XXXX)</label>
+            <input id="ssn" name="ssn" type="text">
+          </div>
+
+           <div id="cardContainer"> <!--Visas vid kortbetalning-->
+            <div class="form-group">
+              <label for="cardNumber">Kortnummer</label>
+              <input id="cardNumber" name="cardNumber" type="text">
+            </div>
+            <div class="form-group">
+              <label for="expiry">Giltligt till (MM/ÅÅ)</label>
+              <input id="expiry" name="expiry" type="text">
+            </div>
+            <div class="form-group">
+              <label for="cvc">CVC</label>
+              <input id="cvc" name="cvc" type="text">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="gdpr">
+              Jag godkänner behandling av personuppgifter
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="newsletter" checked>
+              Jag vill prenumerera på nyhetsbrev
+            </label>
+          </div>
+
+          <button id="submitOrder" disabled>Skicka beställning</button>
+          <button type="button" id="resetOrder">Rensa beställning</button>
+
+
+         
         </form>
       </div>
     </section>
