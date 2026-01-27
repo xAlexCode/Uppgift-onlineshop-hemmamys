@@ -7,6 +7,25 @@
     width: 450px;
   }
 
+  .checkout-card {
+    .increase-cart-product,
+    .decrease-cart-product {
+      padding: 0.5rem 0.8rem;
+    }
+
+    .delete-product {
+      padding: 0.5rem 0.8rem;
+    }
+
+    .cart-amount {
+      width: 4rem;
+    }
+
+    .cart-price {
+      width: 4rem;
+    }
+  }
+
   .sort {
     grid-template-columns: 1fr 1fr;
     justify-items: center;

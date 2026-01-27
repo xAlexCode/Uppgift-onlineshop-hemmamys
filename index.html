@@ -35,6 +35,9 @@
   <section id="checkoutSection" class="hidden">
     <div class="checkout-card">
       <button id="backToCart">Tillbaka</button>
+      <h2>Sammanfattning</h2>
+      <div id="checkoutCart"></div>
+      <p class="cart-total" id="checkoutTotal"></p>
       <h2>Beställningsformulär</h2>
 
       <form id="checkoutForm">
@@ -57,8 +60,8 @@
         <div class="form-group">
           <label>
             <span>Adress</span>
-            <input id="adress" name="adress" type="text" autocomplete="street-address" aria-describedby="adressError">
-            <span id="adressError" class="hidden error">Fel: Ange en giltig adress</span>
+            <input id="adres" name="adres" type="text" autocomplete="street-addres" aria-describedby="adresError">
+            <span id="adresError" class="hidden error">Fel: Ange en giltig adress</span>
           </label>
         </div>
         <div class="form-group">
@@ -100,12 +103,12 @@
           <legend>Betalsätt</legend>
 
           <label>
-            <input type="radio" name="payment" value="card" checked>
+            <input type="radio" name="invoiceOrCard" value="card" checked>
             Kort
           </label>
 
           <label>
-            <input type="radio" name="payment" value="invoice">
+            <input type="radio" name="invoiceOrCard" value="invoice">
             Faktura
           </label>
         </fieldset>
@@ -154,7 +157,7 @@
           </label>
         </div>
 
-        <button id="submitOrder" disabled>Skicka beställning</button>
+        <button id="orderBtn" disabled>Skicka beställning</button>
         <button type="button" id="resetOrder">Rensa beställning</button>
       </form>
     </div>

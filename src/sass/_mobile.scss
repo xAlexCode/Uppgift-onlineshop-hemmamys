@@ -1,3 +1,7 @@
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------- COLORS ----------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 //Background color for navbar
 $nav-background: #522969;
 
@@ -14,6 +18,10 @@ $cart-background: #71b9c8;
 $heading-color: #eae6e6;
 $text-color: #522969;
 $text-dark: #2c2c2c;
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------ BODY ----------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 body {
   background-color: $body-background;
@@ -38,6 +46,9 @@ body {
   background-repeat: no-repeat;
 }
 
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------- HEADER ----------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 header {
   position: fixed;
   width: 100%;
@@ -74,6 +85,10 @@ header {
     }
   }
 }
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------- VARUKORG ---------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 #cartSection {
   position: fixed;
@@ -196,6 +211,25 @@ header {
   display: none;
 }
 
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------- SAMMANFATTNIKNGE --------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+.checkout-card {
+  background-color: $card-background;
+  border-radius: 6px;
+  padding: 1rem;
+  color: $heading-color; 
+}
+
+ .hidden {
+    display: none;
+  }
+
+#checkoutSection.hidden {
+  display: none;
+}
+
 #checkoutSection {
   position: fixed;
   top: 0;
@@ -205,21 +239,236 @@ header {
   background-color: $body-background;
   padding: 1rem;
   z-index: 1001;
-  border-radius: 0 0 10px 10px;
-  border: 1px solid #eae6e6;
+  overflow-y: auto; // Viktigt om formuläret blir långt scrollar 
 }
 
 .checkout-card {
+  max-width: 600px;
+  margin: 0 auto;
   background-color: $card-background;
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 1rem;
   color: $heading-color;
 
+  h2 {
+    padding-bottom: 1rem;
+    text-align: center;
+    font-family: 'dynapuff', system-ui;
+    letter-spacing: 1px;
+  }
+
+  #backToCart {
+    background-color: $heading-color;
+    color: $text-dark;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $cart-background;
+      color: $text-dark;
+    }
+  }
+
+  .cart-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: left;
+    color: $heading-color;
+    gap: 0.5rem;
+    padding-top: 1rem;
+  }
+
+  .cart-name {
+    font-weight: bold;
+  }
+
+  .cart-controls {
+    display: flex;
+    align-items: center;
+  }
+
+  .cart-amount {
+    width: 3rem;
+    text-align: center;
+    font-family: 'fira code', sans-serif;
+  }
+
+  .cart-price {
+    width: 3rem;
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .increase-cart-product,
+  .decrease-cart-product {
+    background-color: $heading-color;
+    color: $text-dark;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background-color: $nav-background;
+      color: $heading-color;
+    }
+  }
+
+  .delete-product {
+    background-color: $heading-color;
+    color: $text-dark;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background-color: $nav-background;
+      color: $heading-color;
+    }
+  }
+
+  .cart-total {
+    margin-top: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    padding: 0.8rem 0;
+    border-bottom: #eae6e6 2px solid;
+  }
+
+  #checkoutTotal {
+    text-align: right;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid $heading-color;
+    padding-bottom: 0.5rem;
+  }
 }
 
-#checkoutSection.hidden {
+// ----------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------- FORMULÄRET --------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+#checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      color: $heading-color;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+
+    input {
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: none;
+      background-color: $heading-color;
+      color: $text-dark;
+      font-size: 1rem;
+      transition: box-shadow 0.2s ease;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px $cart-background;
+      }
+    }
+
+    span.error {
+      margin-top: 0.3rem;
+      padding: 0.4rem;
+      border-left: 4px solid red;
+      border-radius: 4px;
+      color: red;
+      font-weight: bold;
+    }
+  }
+
+  fieldset {
+    border: 1px solid $heading-color;
+    padding: 1rem;
+    border-radius: 6px;
+
+    legend {
+      padding: 0 0.5rem;
+      color: $heading-color;
+      font-weight: bold;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  #orderBtn {
+    background-color: $heading-color;
+    color: $text-dark;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: $cart-background;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  #resetOrder {
+    background-color: transparent;
+    color: $heading-color;
+    border: 1px solid $heading-color;
+    padding: 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $cart-background;
+      color: $text-dark;
+    }
+  }
+}
+
+#ssnContainer {
   display: none;
 }
+
+#ssnContainer.hidden {
+  display: none;
+}
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------- SORTERING/FILTER LISTA ---------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 .sort {
   display: grid;
@@ -263,6 +512,10 @@ header {
     }
   }
 }
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------- PRODUKTLISTA -----------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 .products-list {
   display: grid;
@@ -360,6 +613,10 @@ header {
   }
 }
 
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------ VARUKORG TOTALEN ----------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+
 .cart-total {
   transition: all 0.2s ease-in-out;
 }
@@ -367,6 +624,10 @@ header {
 .highlight-price {
   color: green;
 }
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------- FOOTER ---------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 .footer {
   display: flex;
@@ -381,6 +642,10 @@ header {
   padding-bottom: 1rem;
   margin: 1rem;
 }
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------- EXTRA MEDIA QUERRY ---------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 @media screen and (min-width: 400px) {
   #cartSection {
@@ -399,6 +664,12 @@ header {
 
     .cart-price {
       width: 4rem;
+    }
+  }
+
+  .checkout-card {
+    .cart-item {
+      grid-template-columns: 1fr auto auto auto;
     }
   }
 }

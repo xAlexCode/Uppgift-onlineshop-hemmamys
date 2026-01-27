@@ -1,5 +1,17 @@
 import './style.scss';
 import products from './products.mjs';
+import {
+  validateFirstNameField,
+  validateLastNameField,
+  validateAdresField,
+  validateZipField,
+  validateCityField,
+  validatePhoneField,
+  validateEmailField,
+  validateSsnField,
+  validateGdprField,
+  toggleOrderButtonActive,
+} from './validation.mjs';
 
 /**
  * Flyttade över produkterna till products.mjs för att ge lite struktur i dokumentet och göra det lättare att läsa.
@@ -246,7 +258,10 @@ function addProductToCart(e) {
 
   updateCartTotals(); // Uppdatera totalsumman och skriv ut i kundvagnen igen
   printCart();
+  printCheckoutCart();
+  updateCheckoutTotal();
 }
+
 
 // ----------------------------------------------------------------------------------------------------------------------------------
 // -------------------------------------------------- Funktion uppdatera pris i kundvagnen ------------------------------------------
@@ -345,6 +360,23 @@ function printCart() {
   });
 }
 
+function printCheckoutCart() { 
+    const checkoutCart = document.querySelector('#checkoutCart'); 
+    checkoutCart.innerHTML = cartList.innerHTML; 
+    // Koppla knapparna igen i checkout 
+    
+    checkoutCart.querySelectorAll('.decrease-cart-product') 
+    .forEach(btn => btn.addEventListener('click', decreaseProductFromCart)); 
+    
+    checkoutCart.querySelectorAll('.increase-cart-product') 
+    .forEach(btn => btn.addEventListener('click', increaseProductFromCart)); 
+    
+    checkoutCart.querySelectorAll('.delete-product') .forEach(btn => btn.addEventListener('click', deleteProductFromCart));
+  }
+
+function updateCheckoutTotal() { 
+  const checkoutTotal = document.querySelector('#checkoutTotal'); 
+  checkoutTotal.textContent = cartTotalElement.textContent; }
 // ----------------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------- Funktioner som +/- och raderar i kundvagnen --------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------------------
@@ -361,6 +393,8 @@ function decreaseProductFromCart(e) {
   }
   printCart(); // Skriver ut kundvagnen igen
   updateCartTotals(); // Uppdaterar totalsumman
+  printCheckoutCart();
+  updateCheckoutTotal();
 }
 
 function increaseProductFromCart(e) {
@@ -370,6 +404,8 @@ function increaseProductFromCart(e) {
   product.amount += 1; // Ökar antalet
   printCart();
   updateCartTotals();
+  printCheckoutCart();
+  updateCheckoutTotal();
 }
 
 function deleteProductFromCart(e) {
@@ -379,6 +415,8 @@ function deleteProductFromCart(e) {
 
   printCart();
   updateCartTotals();
+  printCheckoutCart();
+  updateCheckoutTotal();
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------------
@@ -407,6 +445,8 @@ checkoutBtn.addEventListener('click', () => {
   cartSection.classList.add('hidden');
 
   checkoutSection.classList.remove('hidden');
+  printCheckoutCart();
+  updateCheckoutTotal();
 });
 
 backToCart.addEventListener('click', () => { // När man klickar på tillbaka knappen så ändras döljs checkoutsection och cartsection blir synlig igen, samt shopen generellt
@@ -414,4 +454,40 @@ backToCart.addEventListener('click', () => { // När man klickar på tillbaka kn
   cartSection.classList.remove('hidden');
 });
 
+// ----------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------- Kort och Faktura som är hidden/visible -----------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+const paymentOptions = document.querySelectorAll('input[name="invoiceOrCard"]');
+const ssnContainer = document.querySelector('#ssnContainer');
+const cardContainer = document.querySelector('#cardContainer');
+
+paymentOptions.forEach((option) => {
+  option.addEventListener('change', () => {
+    if (option.value === 'invoice') {
+      ssnContainer.classList.remove('hidden');
+      cardContainer.classList.add('hidden');
+    } else {
+      ssnContainer.classList.add('hidden');
+      cardContainer.classList.remove('hidden');
+    }
+
+    // Uppdatera valideringen efter växling
+    toggleOrderButtonActive();
+  });
+});
+
+const resetOrderBtn = document.querySelector('#resetOrder');
+resetOrderBtn.addEventListener('click', resetOrderForm);
+
+function resetOrderForm() {
+  const form = document.querySelector('#checkoutForm');
+  form.reset();
+
+  document.querySelectorAll('.error').forEach((error) => {
+    error.classList.add('hidden');
+  });
+
+  printCart();
+}
 printProducts(); // skriver ut produkterna på sidan
