@@ -1,19 +1,17 @@
-// importera till main.js
 
 // ----------------------------------------------------------------------------------------------------------------------------------
 // -------------------------------------------------------- RegEx regler ------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------------------
 // RegEx reglerna definerade för varje fält, vad som räknas som giltliga värden i varje formulär.
 // Dessa används senare i valideringsfunktioner
-const firstNameRegEx = /^[A-Za-zÅÄÖåäö\s\-]{2,}$/;
-const lastNameRegEx = /^[A-Za-zÅÄÖåäö\s\-]{2,}$/;
+const firstNameRegEx = /^[A-Za-zÅÄÖåäö\s-]{2,}$/;
+const lastNameRegEx = /^[A-Za-zÅÄÖåäö\s-]{2,}$/;
 const adresRegEx = /^.{3,}$/;
 const zipRegEx = /^\d{5}$/;
-const cityRegEx = /^[A-Za-zÅÄÖåäö\s\-]{2,}$/;
+const cityRegEx = /^[A-Za-zÅÄÖåäö\s-]{2,}$/;
 const phoneRegEx = /^07\d{8}$/;
 const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ssnRegEx = /^\d{8}-?\d{4}$/;
-
 
 // ----------------------------------------------------------------------------------------------------------------------------------
 // ------------------------------------------------------ Formulärfälten ------------------------------------------------------------
@@ -65,7 +63,6 @@ gdprField.addEventListener('change', validateGdprField); // GDPR
 function validateFirstNameField() {
   const inputFieldValue = firstNameField.value; // Hämta värdet från input
   const isValidFirstName = firstNameRegEx.test(inputFieldValue); // Testa värdet mot regex
-
   if (isValidFirstName) {
     firstNameField.nextElementSibling.classList.add('hidden'); // Dölj felmeddelande
   } else {
@@ -74,7 +71,6 @@ function validateFirstNameField() {
 
   return isValidFirstName; // Returnera true eller false
 }
-
 // Efternamn
 function validateLastNameField() {
   const inputFieldValue = lastNameField.value; // Hämta värdet från input

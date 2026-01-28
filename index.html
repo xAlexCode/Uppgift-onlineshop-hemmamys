@@ -37,6 +37,9 @@
       <button id="backToCart">Tillbaka</button>
       <h2>Sammanfattning</h2>
       <div id="checkoutCart"></div>
+      <p id="checkoutBulkDiscount"></p>
+      <p id="checkoutDiscount"></p>
+      <p id="checkoutShipping"></p>
       <p class="cart-total" id="checkoutTotal"></p>
       <h2>Beställningsformulär</h2>
 
@@ -45,7 +48,7 @@
           <label>
             <span>Förnamn</span>
             <input id="firstName" name="firstName" type="text" autocomplete="given-name"
-              aria-describedby="firstNameError">
+              aria-describedby="firstNameError" required>
             <span id="firstNameError" class="hidden error">Fel: Förnamn behöver minst två bokstäver</span>
           </label>
         </div>
@@ -53,28 +56,28 @@
           <label>
             <span>Efternamn</span>
             <input id="lastName" name="lastName" type="text" autocomplete="family-name"
-              aria-describedby="lastNameError">
+              aria-describedby="lastNameError" required>
             <span id="lastNameError" class="hidden error">Fel: Efternamn behöver minst två bokstäver</span>
           </label>
         </div>
         <div class="form-group">
           <label>
             <span>Adress</span>
-            <input id="adres" name="adres" type="text" autocomplete="street-addres" aria-describedby="adresError">
+            <input id="adres" name="adres" type="text" autocomplete="street-address" aria-describedby="adresError" required>
             <span id="adresError" class="hidden error">Fel: Ange en giltig adress</span>
           </label>
         </div>
         <div class="form-group">
           <label>
             <span>Postnummer</span>
-            <input id="zip" name="zip" type="text" autocomplete="postal-code" aria-describedby="zipError">
+            <input id="zip" name="zip" type="text" autocomplete="postal-code" aria-describedby="zipError" required>
             <span id="zipError" class="hidden error">Fel: Postnummer ska vara 5 siffror</span>
           </label>
         </div>
         <div class="form-group">
           <label>
             <span>Postort</span>
-            <input id="city" name="city" type="text" autocomplete="address-level2" aria-describedby="cityError">
+            <input id="city" name="city" type="text" autocomplete="address-level2" aria-describedby="cityError" required>
             <span id="cityError" class="hidden error">Fel: Ange en giltig ort</span>
           </label>
         </div>
@@ -87,15 +90,21 @@
         <div class="form-group">
           <label>
             <span>Telefon</span>
-            <input id="phone" name="phone" type="text" autocomplete="tel" aria-describedby="phoneError">
+            <input id="phone" name="phone" type="text" autocomplete="tel" aria-describedby="phoneError" required>
             <span id="phoneError" class="hidden error">Fel: Ange ett giltigt mobilnummer</span>
           </label>
         </div>
         <div class="form-group">
           <label>
             <span>E-post</span>
-            <input id="email" name="email" type="text" autocomplete="email" aria-describedby="emailError">
+            <input id="email" name="email" type="text" autocomplete="email" aria-describedby="emailError" required>
             <span id="emailError" class="hidden error">Fel: E-postadressen har fel format</span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <span>Rabattkod</span>
+            <input id="discountCode" name="discountCode" type="text">
           </label>
         </div>
 
@@ -108,7 +117,7 @@
           </label>
 
           <label>
-            <input type="radio" name="invoiceOrCard" value="invoice">
+            <input type="radio" id="invoice" name="invoiceOrCard" value="invoice">
             Faktura
           </label>
         </fieldset>
