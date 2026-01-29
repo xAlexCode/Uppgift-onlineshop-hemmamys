@@ -2,17 +2,17 @@
 <html lang="sv">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Assignment 1 with javascript" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assignment 1 with javascript">
   <title>FED25D | Inlämningsuppgift 1</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Fira+Code:wght@300..700&display=swap"
-    rel="stylesheet" />
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>" />
+    rel="stylesheet" >
+  <link rel="icon" type="image/png" href="/img/lollipop.png">
+
 </head>
 
 <body>
@@ -63,7 +63,7 @@
         <div class="form-group">
           <label>
             <span>Adress</span>
-            <input id="adres" name="adres" type="text" autocomplete="street-address" aria-describedby="adresError" required>
+            <input id="adres" name="adres" type="text" autocomplete="address-line1" aria-describedby="adresError" required>
             <span id="adresError" class="hidden error">Fel: Ange en giltig adress</span>
           </label>
         </div>
@@ -195,10 +195,8 @@
       </div>
     </section>
 
-    <section class="products-list" id="products"></section>
-    <!-- Add products with JS -->
-    <section>
-      <!--- Kunduppgifter kommer senare -->
+    <section class="products-list" id="products">
+      <h2>Produkter</h2> <!--Var tvungen lägga till för validatorn va ledsen-->
     </section>
   </main>
 

@@ -1,4 +1,9 @@
-# Lägg upp en plan för arbetet här!
+# Utvärdering av detta dokument
+
+- Med tiden insåg jag att det var lättare att beskriva flödet i main.js för att förstå vad som händer och få ett bättre flöde, därav är detta mest en beskrivandet lista av projektet snarare än psuedokod.
+
+
+## Lägg upp en plan för arbetet här!
 
 Skriv så mycket kommentarer som möjligt för att förstå allt för uppgiften
 
@@ -47,10 +52,12 @@ När användaren klickar på button ex sött:
 - En button för att lägga till i kundvagnen efter du valt antal godisar, antar att man ska koppla ett event med antalet godisar så att dem vid click läggs till i kundvagnsiconen överst på sidan.
 - Enligt uppgift får man inte acceptera negativt antal skapa if sats att om antalet är mindre än 1 ska det registreras som 1?
 
-## Sammanställning av kundvagn
+## Sammanställning av varukorgen
 
-- Du ska kunna klicka på kundvagnen och se en sammanställning av artiklar och kunna klicka sig vidare till beställningsformuläret. Beskriv senare
+- Du ska kunna klicka på varukorgen och se artiklar och kunna klicka sig vidare till beställningsformuläret. 
 
 ## Beställningsformuläret
 
-- Beställningsformulärt ska innehålla ett forumlär med alla uppgifter för leverans.
+- Beställningsformulärt ska innehålla en sammanställning av artiklar, eventuella rabatter ex måndagsrabatt, mängdrabatt. Under ska det vara ett forumlär med alla uppgifter för leverans samt en skicka och rensa knapp. Det kommer vara en timer på 15 min som startar när man klickar på kassa knappen och ger en alert/tömmer formuläraret och varukorgen i checkout/varukorg. 
+
+

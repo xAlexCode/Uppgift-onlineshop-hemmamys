@@ -1,26 +1,32 @@
 # Information
 
-Detta är första uppgiften med Javascript på medieinstitutet, där uppgiften är att skapa en liten online shop med 10 produkter. Man ska kunna filtrera efter tre kategoriser sött, surt och choklad (finns visa alla också). Man ska kunna sortera på pris, betyg, kategori och bokstavsordning. Man ska kunna öka och minska antal, samt lägga till i en kundvagn som uppdaterar antalet i kundvagnen. Kundvagnen ska dyka upp när man trycker på iconen och ta en till ett sammanfattning och ett beställningsformulär.
+Detta är första uppgiften med Javascript på medieinstitutet, där uppgiften är att skapa en liten online shop med 10 produkter. Man ska kunna filtrera efter tre kategoriser sött, surt, choklad och visa alla. Man ska kunna sortera på pris, betyg, kategori och bokstavsordning. Man ska kunna öka och minska antal, samt lägga till i en varukorg som uppdaterar antalet i varukorgen. Varukorgen ska dyka upp när man trycker på kassaknappen och ta en till en sammanfattning  med rabatter och totalpris och ett beställningsformulär. Beställningsformuläret får validering av RegEx och har en timer på 15 min som rensar varukorgen/checkout, formuläret och ger en alert. 
 
 ## Använda tekniker
 
 ![HTML badge](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) ![CSS badge](https://img.shields.io/badge/CSS-563d7c?&style=flat&logo=css3&logoColor=white) ![Sass](https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white) ![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) ![Markdown](https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?style=flat&logo=apple&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-%23192a32?style=for-the-badge&logo=prettier&logoColor=dc524a)![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 
 ## Screenshots från projektet
 
-![Mockup på papper](mockup.png)
+![Lighthouse](/public/img/lighthouse.png)
 
-![Mockup på flödet med miro](miro.png)
+![Firefox](/public/img/firefox.png)
 
-![Lighthouse](lighthouse.png)
+![w3c](/public/img/w3c.png)
 
-![Firefox](firefox.png)
+![Mockup testflödet av flöde miro (liten version)](/public/img/miro.png)
 
-![w3c](w3c.png)
+![Mockup på papper](/public/img/mockup1.jpeg)
+
+![Mockup på papper](/public/img/mockup2.jpeg)
+
+![Mockup på papper](/public/img/mockup3.jpeg)
 
 ### Bildkällor
 
 - Banner med klubbor, Photo by [Iwona Castiello d'Antonio](https://unsplash.com/@aquadrata) on [Unsplash](https://unsplash.com/photos/dnMLdR814aA)
+-Favicon med Lollipop icon, Icon by [Smashicons](https://www.flaticon.com/authors/smashicons) on [Flaticon](https://www.flaticon.com/free-icons/lollipop)
 - Bubblefizz, Photo by [Caspar Rae](https://unsplash.com/@raecaspar) on [Unsplash](https://unsplash.com/photos/red-and-blue-stone-fragments-OJ5daDcJuf4)
 - Chokladkaka, Photo by [Towfiqu Barbhuiya](https://unsplash.com/@towfiqu999999) on [Unsplash](https://unsplash.com/photos/brown-chocolate-bar-on-black-table-uNi4M3sHqOo)
 - Ferrero rocher, Photo by [Laura](https://unsplash.com/@haroka) on [Unsplash](https://unsplash.com/photos/a-close-up-of-a-box-of-chocolate-eggs-XUqv4bIJTNQ)
