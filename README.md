@@ -2,6 +2,8 @@
 
 Detta är första uppgiften med Javascript på medieinstitutet, där uppgiften är att skapa en liten online shop med 10 produkter. Man ska kunna filtrera efter tre kategoriser sött, surt, choklad och visa alla. Man ska kunna sortera på pris, betyg, kategori och bokstavsordning. Man ska kunna öka och minska antal, samt lägga till i en varukorg som uppdaterar antalet i varukorgen. Varukorgen ska dyka upp när man trycker på kassaknappen och ta en till en sammanfattning  med rabatter och totalpris och ett beställningsformulär. Beställningsformuläret får validering av RegEx och har en timer på 15 min som rensar varukorgen/checkout, formuläret och ger en alert. 
 
+Projektet är flyttat från medieinstitutet till egna github
+
 ## Använda tekniker
 
 ![HTML badge](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) ![CSS badge](https://img.shields.io/badge/CSS-563d7c?&style=flat&logo=css3&logoColor=white) ![Sass](https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white) ![Javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) ![Markdown](https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![macOS](https://img.shields.io/badge/macOS-000000?style=flat&logo=apple&logoColor=white)
